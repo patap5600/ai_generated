@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New York Weather V2- Multi-Agents Weather by Gemini, GPT, Anthropic</title>
+    <title>Miami Weather - Multi-Agents Weather by Gemini, GPT, Anthropic</title>
     <style>
         body {
             font: 75% georgia, sans-serif;
             line-height: 1.88889;
             color: #555753;
-            background: linear-gradient(135deg, hsla(172, 40.3%, 45.7%, 0.40), hsla(200, 40%, 80%, 0.60));
+            background: linear-gradient(135deg, hsla(172, 40.3%, 45.7%, 0.40), hsla(200, 60%, 70%, 0.40));
             margin: 0;
             padding: 0;
             min-height: 100vh;
@@ -48,33 +48,30 @@
             color: #26C6DA;
         }
         .container {
-            width: 80%;
-            margin: 20px auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
-        header h1 {
+        .container:hover {
+            transform: translateY(-5px);
+        }
+        h1 {
             color: white;
             text-shadow: 2px 2px 4px #000000;
-            font-size: 2em;
-            text-indent: 0;
-            white-space: normal;
-            overflow: visible;
-            float: none;
-            display: inline-block;
-            width: auto;
-            height: auto;
+            font-size: 2.5em;
+            margin: 0;
         }
         h2 {
             color: #26C6DA;
             margin-top: 20px;
-            margin-bottom: 10px;
         }
         p {
-            margin-top: 0;
+            margin-top: 10px;
             text-align: justify;
+            font-size: 1.1em;
         }
         .weather-icon {
             font-size: 4em;
@@ -87,7 +84,7 @@
             color: #26C6DA;
         }
         @media (max-width: 600px) {
-            .content, .container {
+            .content {
                 width: 95%;
             }
         }
@@ -100,14 +97,26 @@
 
     <div class="content">
         <div id="datetime"></div>
-        <h2>Weather in New York</h2>
-        <div class="weather-icon">🌤️</div>
-        <p class="temperature">17°C</p>
-        <p>Current weather: Partly sunny</p>
-        <h2>About New York</h2>
-        <p>New York City, often called New York, is the most populous city in the United States. With a rich history and diverse culture, it's a global hub for finance, fashion, and entertainment.</p>
-        <h2>Climate Information</h2>
-        <p>New York City experiences a humid subtropical climate, characterized by warm summers and cold winters. The city's proximity to the Atlantic Ocean influences its weather patterns, often resulting in mild temperatures compared to inland areas at the same latitude.</p>
+
+        <div class="container">
+            <h2>Weather in Miami</h2>
+            <p>Miami, known for its vibrant culture, stunning beaches, and Art Deco architecture, generally has a warm and sunny climate. Expect pleasant temperatures year-round, with hot and humid summers and mild, dry winters. It's also good to be aware of the hurricane season, which typically runs from June to November.</p>
+        </div>
+
+        <div class="container">
+            <h2>Current Weather Conditions</h2>
+            <div class="weather-icon">☁️</div>
+            <div class="temperature">26°C</div>
+            <p>The weather in Miami is currently mostly cloudy with a temperature of 26°C.</p>
+        </div>
+
+        <div class="container">
+            <h2>Miami Climate Information</h2>
+            <p>Miami experiences a tropical monsoon climate with hot summers and warm winters. The city receives abundant rainfall, particularly during the wet season from May to October. The proximity to the Gulf Stream and the Atlantic Ocean moderates temperatures throughout the year.</p>
+            <p>Annual average high temperature: 29°C (84°F)<br>
+            Annual average low temperature: 21°C (70°F)<br>
+            Average annual rainfall: 1,572 mm (61.9 inches)</p>
+        </div>
     </div>
 
     <footer class="footer">
