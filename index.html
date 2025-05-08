@@ -6,10 +6,10 @@
     <title>Multi-Agents Weather by Gemini, GPT, Anthropic</title>
     <style>
         body {
-            font: 75% georgia, sans-serif;
-            line-height: 1.88889;
-            color: #555753;
-            background: linear-gradient(135deg, hsla(172, 40.3%, 45.7%, 0.40), hsla(200, 40%, 80%, 0.60));
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
             margin: 0;
             padding: 0;
             min-height: 100vh;
@@ -17,20 +17,21 @@
             flex-direction: column;
         }
         .header {
-            background-color: #26C6DA;
+            background-color: #0288d1;
             color: white;
             text-align: center;
-            padding: 1em 0;
+            padding: 1.5em 0;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .content {
             flex: 1;
             padding: 20px;
-            width: 80%;
+            width: 90%;
+            max-width: 800px;
             margin: 20px auto;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
         .footer {
             background-color: #333;
@@ -43,8 +44,8 @@
         #datetime {
             font-size: 1.2em;
             text-align: center;
-            margin-top: 20px;
-            color: #26C6DA;
+            margin: 20px 0;
+            color: #0288d1;
         }
         .container {
             background-color: #fff;
@@ -52,34 +53,47 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        .container:hover {
+            transform: translateY(-5px);
         }
         h1 {
             color: white;
             text-shadow: 2px 2px 4px #000000;
-            font-size: 2em;
+            font-size: 2.5em;
             margin: 0;
         }
         h2 {
-            color: #26C6DA;
+            color: #0288d1;
             margin-top: 20px;
+            font-size: 1.8em;
         }
         p {
             margin-top: 10px;
             text-align: justify;
+            font-size: 1.1em;
         }
         .weather-icon {
-            font-size: 4em;
+            font-size: 5em;
             text-align: center;
             margin: 20px 0;
         }
         .temperature {
-            font-size: 2em;
+            font-size: 3em;
             text-align: center;
-            color: #26C6DA;
+            color: #0288d1;
+            font-weight: bold;
         }
         @media (max-width: 600px) {
             .content {
                 width: 95%;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .temperature {
+                font-size: 2.5em;
             }
         }
     </style>
@@ -93,19 +107,26 @@
         <div id="datetime"></div>
         
         <div class="container">
-            <h2>Weather in Miami</h2>
-            <p>You asked for the weather in Miami. Here's the current information:</p>
+            <h2>Weather in San Francisco</h2>
+            <p>You asked for the weather in San Francisco. Here's the current information:</p>
         </div>
 
         <div class="container">
-            <div class="weather-icon">☁️</div>
-            <p class="temperature">25°C</p>
-            <p>The weather in Miami is currently mostly cloudy.</p>
+            <div class="weather-icon">☀️</div>
+            <p class="temperature">12°C</p>
+            <p>The weather in San Francisco is currently mostly sunny.</p>
         </div>
 
         <div class="container">
-            <h2>About Miami's Climate</h2>
-            <p>Miami has a tropical monsoon climate with hot and humid summers and short, warm winters. The city experiences a pronounced wet season from May through October, and a dry season from November through April. Miami's proximity to the ocean helps moderate temperatures year-round.</p>
+            <h2>About San Francisco's Climate</h2>
+            <p>San Francisco has a unique microclimate characterized by mild temperatures year-round. The city experiences a Mediterranean climate with dry summers and mild, wet winters. Its weather is heavily influenced by the cool currents of the Pacific Ocean and the city's topography.</p>
+            <p>Key features of San Francisco's climate:</p>
+            <ul>
+                <li>Summers are characterized by cool temperatures and fog, especially in the mornings.</li>
+                <li>Fall is often the warmest time of the year, known as "Indian Summer".</li>
+                <li>Winters are mild and rainy, with temperatures rarely dropping below freezing.</li>
+                <li>The city experiences significant microclimates, with temperatures varying across different neighborhoods.</li>
+            </ul>
         </div>
     </div>
 
@@ -116,7 +137,7 @@
     <script>
         function updateDateTime() {
             const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
             document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
         }
 
