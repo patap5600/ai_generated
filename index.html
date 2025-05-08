@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Miami Weather - Multi-Agents Weather by Gemini, GPT, Anthropic</title>
+    <title>Multi-Agents Weather by Gemini, GPT, Anthropic</title>
     <style>
         body {
             font: 75% georgia, sans-serif;
             line-height: 1.88889;
             color: #555753;
-            background: linear-gradient(135deg, hsla(172, 40.3%, 45.7%, 0.40), hsla(200, 60%, 70%, 0.40));
+            background: linear-gradient(135deg, hsla(172, 40.3%, 45.7%, 0.40), hsla(200, 40%, 80%, 0.60));
             margin: 0;
             padding: 0;
             min-height: 100vh;
@@ -21,15 +21,14 @@
             color: white;
             text-align: center;
             padding: 1em 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         .content {
             flex: 1;
             padding: 20px;
-            line-height: 1.6;
             width: 80%;
             margin: 20px auto;
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
@@ -39,7 +38,7 @@
             text-align: center;
             padding: 1em 0;
             width: 100%;
-            flex-shrink: 0;
+            margin-top: auto;
         }
         #datetime {
             font-size: 1.2em;
@@ -53,15 +52,11 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-        .container:hover {
-            transform: translateY(-5px);
         }
         h1 {
             color: white;
             text-shadow: 2px 2px 4px #000000;
-            font-size: 2.5em;
+            font-size: 2em;
             margin: 0;
         }
         h2 {
@@ -71,7 +66,6 @@
         p {
             margin-top: 10px;
             text-align: justify;
-            font-size: 1.1em;
         }
         .weather-icon {
             font-size: 4em;
@@ -97,25 +91,21 @@
 
     <div class="content">
         <div id="datetime"></div>
-
+        
         <div class="container">
             <h2>Weather in Miami</h2>
-            <p>Miami, known for its vibrant culture, stunning beaches, and Art Deco architecture, generally has a warm and sunny climate. Expect pleasant temperatures year-round, with hot and humid summers and mild, dry winters. It's also good to be aware of the hurricane season, which typically runs from June to November.</p>
+            <p>You asked for the weather in Miami. Here's the current information:</p>
         </div>
 
         <div class="container">
-            <h2>Current Weather Conditions</h2>
             <div class="weather-icon">☁️</div>
-            <div class="temperature">26°C</div>
-            <p>The weather in Miami is currently mostly cloudy with a temperature of 26°C.</p>
+            <p class="temperature">25°C</p>
+            <p>The weather in Miami is currently mostly cloudy.</p>
         </div>
 
         <div class="container">
-            <h2>Miami Climate Information</h2>
-            <p>Miami experiences a tropical monsoon climate with hot summers and warm winters. The city receives abundant rainfall, particularly during the wet season from May to October. The proximity to the Gulf Stream and the Atlantic Ocean moderates temperatures throughout the year.</p>
-            <p>Annual average high temperature: 29°C (84°F)<br>
-            Annual average low temperature: 21°C (70°F)<br>
-            Average annual rainfall: 1,572 mm (61.9 inches)</p>
+            <h2>About Miami's Climate</h2>
+            <p>Miami has a tropical monsoon climate with hot and humid summers and short, warm winters. The city experiences a pronounced wet season from May through October, and a dry season from November through April. Miami's proximity to the ocean helps moderate temperatures year-round.</p>
         </div>
     </div>
 
@@ -126,7 +116,7 @@
     <script>
         function updateDateTime() {
             const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
             document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
         }
 
