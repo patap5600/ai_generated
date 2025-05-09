@@ -9,14 +9,10 @@
             font: 75% georgia, sans-serif;
             line-height: 1.88889;
             color: #555753;
-            background: linear-gradient(120deg, #a8e0da, #8ac4ff);
+            background: linear-gradient(to right, #A7DBD8, #E0E4CC);
             margin: 0;
             padding: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
+            transition: background-color 0.5s ease;
         }
 
         .header {
@@ -24,30 +20,27 @@
             color: white;
             text-align: center;
             padding: 1em 0;
-            width: 100%;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
         }
 
-        .header h1 {
-            color: white;
-            text-shadow: 2px 2px 4px #000000;
-            font-size: 2.5em;
+        .header:hover {
+            background-color: #209FB5;
         }
 
         .content {
             padding: 20px;
             line-height: 1.6;
             width: 80%;
-            max-width: 800px;
             margin: 20px auto;
             background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
         }
 
         .content:hover {
-            transform: translateY(-5px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
         }
 
         .footer {
@@ -57,7 +50,6 @@
             padding: 1em 0;
             width: 100%;
             flex-shrink: 0;
-            margin-top: auto;
         }
 
         #datetime {
@@ -74,6 +66,19 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-size: 2.5em;
+            text-indent: 0;
+            white-space: normal;
+            overflow: visible;
+            float: none;
+            display: inline-block;
+            width: auto;
+            height: auto;
         }
 
         h1 {
@@ -98,56 +103,69 @@
             text-indent: 100%;
             white-space: nowrap;
             overflow: hidden;
+            color: #558B2F;
         }
 
         p {
             margin-top: 0;
             text-align: justify;
+            color: #333;
+            font-size: 1.1em;
         }
 
-        /* Additional Styling */
+        /* Add more specific styles as needed */
         .weather-icon {
-            font-size: 5em;
-            color: #ffc107;
-            text-align: center;
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #FDD835;
         }
 
         .temperature {
             font-size: 2em;
             font-weight: bold;
-            text-align: center;
-            margin: 10px 0;
+            color: #E64A19;
+        }
+
+        .section-title {
+            color: #1976D2;
+            border-bottom: 2px solid #1976D2;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        #live-date-time {
+            font-size: 1em;
+            color: #757575;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="header">
+    <header class="header">
         <h1>Multi-Agents Weather by Gemini, GPT, Anthropic</h1>
-    </div>
+    </header>
 
     <div class="content">
-        <p>Weather information for: New York</p>
-        <div class="weather-icon">☀️</div>
-        <p class="temperature">17°C</p>
-        <p>The weather is Mostly cloudy.</p>
-        <p>The city climate is characterized by moderate temperatures and distinct seasons.</p>
+        <h2 class="section-title">Weather in San Francisco</h2>
+        <p>You asked for the weather in San Francisco.</p>
+        <p>General Information: The weather in San francisco is Clear.</p>
+        <p class="temperature">Current Temperature: 15°C</p>
+        <div id="datetime"></div>
     </div>
 
-    <div class="footer">
-        <p>&copy; 2024 Weather Information. All rights reserved.</p>
-    </div>
-
-    <div id="datetime"></div>
+    <footer class="footer">
+        <p>&copy; 2024 Weather Information</p>
+    </footer>
 
     <script>
         function updateDateTime() {
-            var now = new Date();
-            var datetimeString = now.toLocaleString();
-            document.getElementById("datetime").textContent = datetimeString;
+            const now = new Date();
+            const dateTimeString = now.toLocaleString();
+            document.getElementById('datetime').textContent = `Current Date and Time: ${dateTimeString}`;
         }
 
         setInterval(updateDateTime, 1000);
-        updateDateTime(); // Initial call to display сразу
+        updateDateTime(); // Initial call to display immediately
     </script>
 </body>
 </html>
