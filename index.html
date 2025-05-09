@@ -3,146 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Agents Weather by Gemini, GPT, Anthropic</title>
+    <title>Multi-Agents Weather by Gemini,GPT,Anthropic</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .header {
-            background-color: #0288d1;
-            color: white;
-            text-align: center;
-            padding: 1.5em 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .content {
-            flex: 1;
-            padding: 20px;
-            width: 90%;
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-        .footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-            width: 100%;
-            margin-top: auto;
-        }
-        #datetime {
-            font-size: 1.2em;
-            text-align: center;
-            margin: 20px 0;
-            color: #0288d1;
-        }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-        .container:hover {
-            transform: translateY(-5px);
-        }
-        h1 {
-            color: white;
-            text-shadow: 2px 2px 4px #000000;
-            font-size: 2.5em;
-            margin: 0;
-        }
-        h2 {
-            color: #0288d1;
-            margin-top: 20px;
-            font-size: 1.8em;
-        }
-        p {
-            margin-top: 10px;
-            text-align: justify;
-            font-size: 1.1em;
-        }
-        .weather-icon {
-            font-size: 5em;
-            text-align: center;
-            margin: 20px 0;
-        }
-        .temperature {
-            font-size: 3em;
-            text-align: center;
-            color: #0288d1;
-            font-weight: bold;
-        }
-        @media (max-width: 600px) {
-            .content {
-                width: 95%;
-            }
-            h1 {
-                font-size: 2em;
-            }
-            .temperature {
-                font-size: 2.5em;
-            }
-        }
+ body {
+    font: 75% georgia, sans-serif;
+    line-height: 1.88889;
+    color: #555753;
+    background: linear-gradient(to right, #AEEEEE, #FFFFFF);
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #26C6DA;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    padding: 20px;
+    line-height: 1.6;
+    width: 80%;
+    margin: 20px auto;
+    background-color: #E0FFFF;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.content:hover {
+    transform: translateY(-5px);
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+#datetime {
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 20px;
+    color: #26C6DA;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 2.5em;
+    text-indent: 0;
+    white-space: normal;
+    overflow: visible;
+    float: none;
+    display: inline-block;
+    width: auto;
+    height: auto;
+}
+
+h1 {
+    background: transparent;
+    margin-top: 10px;
+    display: block;
+    width: 219px;
+    height: 87px;
+    float: left;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+h2 {
+    background: transparent;
+    margin-top: 58px;
+    margin-bottom: 40px;
+    width: 200px;
+    height: 18px;
+    float: right;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+p {
+    margin-top: 0;
+    text-align: justify;
+}
     </style>
 </head>
 <body>
+
     <header class="header">
-        <h1>Multi-Agents Weather by Gemini, GPT, Anthropic</h1>
+        <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
     </header>
 
     <div class="content">
+        <p>The weather in Miami was asked for.</p>
+        <p>General information about the weather: Clear with periodic clouds.</p>
+        <p>Current temperature: 26°C.</p>
         <div id="datetime"></div>
-        
-        <div class="container">
-            <h2>Weather in San Francisco</h2>
-            <p>You asked for the weather in San Francisco. Here's the current information:</p>
-        </div>
-
-        <div class="container">
-            <div class="weather-icon">☀️</div>
-            <p class="temperature">12°C</p>
-            <p>The weather in San Francisco is currently mostly sunny.</p>
-        </div>
-
-        <div class="container">
-            <h2>About San Francisco's Climate</h2>
-            <p>San Francisco has a unique microclimate characterized by mild temperatures year-round. The city experiences a Mediterranean climate with dry summers and mild, wet winters. Its weather is heavily influenced by the cool currents of the Pacific Ocean and the city's topography.</p>
-            <p>Key features of San Francisco's climate:</p>
-            <ul>
-                <li>Summers are characterized by cool temperatures and fog, especially in the mornings.</li>
-                <li>Fall is often the warmest time of the year, known as "Indian Summer".</li>
-                <li>Winters are mild and rainy, with temperatures rarely dropping below freezing.</li>
-                <li>The city experiences significant microclimates, with temperatures varying across different neighborhoods.</li>
-            </ul>
-        </div>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2023 Multi-Agents Weather. All rights reserved.</p>
+        <p>&copy; 2024 Multi-Agents Weather. All rights reserved.</p>
     </footer>
 
     <script>
         function updateDateTime() {
-            const now = new Date();
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
-            document.getElementById('datetime').textContent = now.toLocaleDateString('en-US', options);
+            var now = new Date();
+            var dateTimeString = now.toLocaleString();
+            document.getElementById('datetime').textContent = dateTimeString;
         }
 
-        updateDateTime();
         setInterval(updateDateTime, 1000);
+        updateDateTime();
     </script>
+
 </body>
 </html>
