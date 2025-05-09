@@ -9,10 +9,9 @@
             font: 75% georgia, sans-serif;
             line-height: 1.88889;
             color: #555753;
-            background: linear-gradient(to right, #A7DBD8, #E0E4CC);
+            background: linear-gradient(to right, #B0E0E6, #ADD8E6);
             margin: 0;
             padding: 0;
-            transition: background-color 0.5s ease;
         }
 
         .header {
@@ -21,11 +20,6 @@
             text-align: center;
             padding: 1em 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
-        }
-
-        .header:hover {
-            background-color: #209FB5;
         }
 
         .content {
@@ -34,13 +28,13 @@
             width: 80%;
             margin: 20px auto;
             background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease-in-out;
         }
 
         .content:hover {
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
         }
 
         .footer {
@@ -103,69 +97,59 @@
             text-indent: 100%;
             white-space: nowrap;
             overflow: hidden;
-            color: #558B2F;
+            color: #26C6DA;
         }
 
         p {
             margin-top: 0;
             text-align: justify;
-            color: #333;
             font-size: 1.1em;
+            color: #333;
         }
 
-        /* Add more specific styles as needed */
+        /* Weather-specific elements */
         .weather-icon {
+            text-align: center;
             font-size: 3em;
             margin-bottom: 10px;
-            color: #FDD835;
         }
 
         .temperature {
             font-size: 2em;
             font-weight: bold;
-            color: #E64A19;
-        }
-
-        .section-title {
-            color: #1976D2;
-            border-bottom: 2px solid #1976D2;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-        }
-
-        #live-date-time {
-            font-size: 1em;
-            color: #757575;
-            margin-top: 10px;
+            color: #e44d26;
         }
     </style>
 </head>
 <body>
-    <header class="header">
+
+    <div class="header">
         <h1>Multi-Agents Weather by Gemini, GPT, Anthropic</h1>
-    </header>
+    </div>
 
     <div class="content">
-        <h2 class="section-title">Weather in San Francisco</h2>
-        <p>You asked for the weather in San Francisco.</p>
-        <p>General Information: The weather in San francisco is Clear.</p>
-        <p class="temperature">Current Temperature: 15°C</p>
+        <div class="weather-icon">
+            &#x26C5; <!-- Cloud with rain -->
+        </div>
+        <p>The weather was asked for Miami.</p>
+        <p>The weather in Miami is Clear with periodic clouds.</p>
+        <p class="temperature">The temperature is 26°C.</p>
         <div id="datetime"></div>
     </div>
 
-    <footer class="footer">
-        <p>&copy; 2024 Weather Information</p>
-    </footer>
+    <div class="footer">
+        <p>&copy; 2024 Multi-Agents Weather. All rights reserved.</p>
+    </div>
 
     <script>
         function updateDateTime() {
-            const now = new Date();
-            const dateTimeString = now.toLocaleString();
-            document.getElementById('datetime').textContent = `Current Date and Time: ${dateTimeString}`;
+            var now = new Date();
+            var datetime = now.toLocaleString();
+            document.getElementById("datetime").textContent = datetime;
         }
 
         setInterval(updateDateTime, 1000);
-        updateDateTime(); // Initial call to display immediately
     </script>
+
 </body>
 </html>
