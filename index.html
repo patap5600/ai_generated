@@ -9,45 +9,120 @@
             font-family: Arial, sans-serif;
             background-color: #f0f8ff;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         .container {
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin: 20px auto;
             background-color: #ffffff;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            flex-grow: 1;
         }
         h1 {
-            color: #0066cc;
+            color: #ffffff;
             text-align: center;
-            background-color: green; /* Changed header background to green */
-            padding: 10px; /* Added padding for better appearance */
-            border-radius: 10px 10px 0 0; /* Match container border-radius */
+            background-color: green;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            margin: 0;
+            transition: background-color 0.3s ease;
+        }
+        h1:hover {
+            background-color: #006400;
         }
         #weather-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
             margin-top: 20px;
+        }
+        .weather-section {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px;
+            flex-basis: calc(33% - 20px);
+            transition: transform 0.3s ease;
+        }
+        .weather-section:hover {
+            transform: scale(1.05);
         }
         .error {
             color: #ff0000;
             font-weight: bold;
+            text-align: center;
+        }
+        #date-time {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: auto;
+        }
+        @media (max-width: 600px) {
+            .weather-section {
+                flex-basis: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 400px) {
+            .weather-section {
+                flex-basis: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Weather Report</h1>
+        <div id="date-time"></div>
         <div id="weather-info">
-            <p class="error">Sorry, weather information is currently unavailable.</p>
+            <div class="weather-section">
+                <h3>Temperature</h3>
+                <p id="temperature">Loading...</p>
+            </div>
+            <div class="weather-section">
+                <h3>Humidity</h3>
+                <p id="humidity">Loading...</p>
+            </div>
+            <div class="weather-section">
+                <h3>Wind Speed</h3>
+                <p id="wind-speed">Loading...</p>
+            </div>
         </div>
     </div>
+    <footer>
+        <p>&copy; 2023 Weather Report. All rights reserved.</p>
+    </footer>
 
     <script>
-        // This script would typically fetch weather data from an API
-        // and update the #weather-info div. For now, it's just a placeholder.
+        function updateDateTime() {
+            const now = new Date();
+            document.getElementById('date-time').textContent = now.toLocaleString();
+        }
+
+        function fetchWeatherData() {
+            // This is a placeholder. In a real application, you would fetch data from a weather API.
+            setTimeout(() => {
+                document.getElementById('temperature').textContent = '25°C';
+                document.getElementById('humidity').textContent = '60%';
+                document.getElementById('wind-speed').textContent = '10 km/h';
+            }, 1000);
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Weather report page loaded.');
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+            fetchWeatherData();
         });
     </script>
 </body>
