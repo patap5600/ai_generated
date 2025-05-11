@@ -1,140 +1,205 @@
-<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Multi-Agents Weather</title>\n    <style>\n body {\n font: 75% georgia, sans-serif;\n line-height: 1.88889;\n color: #555753;\n background: linear-gradient(to right, #A8D0E6, #60A3D9);\n margin: 0;\
- padding: 0;\
- display: flex;\
- flex-direction: column;\
- min-height: 100vh;\
- }\
-\
- .header {\
- background-color: lightgreen;\
- color: white;\
- text-align: center;\
- padding: 1em 0;\
- box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\
- }\
-\
- .content {\
- padding: 20px;\
- line-height: 1.6;\
- width: 80%;\
- margin: 20px auto;\
- background-color: #fff;\
- border-radius: 8px;\
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\
- flex: 1;\
- }\
-\
- .footer {\
- background-color: #333;\
- color: white;\
- text-align: center;\
- padding: 1em 0;\
- width: 100%;\
- flex-shrink: 0;\
- }\
-\
- #datetime {\
- font-size: 1.2em;\
- text-align: center;\
- margin-top: 20px;\
- color: #26C6DA;\
- }\
-\
- .container {\
- width: 80%;\
- margin: 20px auto;\
- background-color: #fff;\
- padding: 20px;\
- border-radius: 8px;\
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\
- }\
-\
- header h1 {\
- color: white;\
- text-shadow: 2px 2px 4px #000000;\
- font-size: 2.5em;\
- text-indent: 0;\
- white-space: normal;\
- overflow: visible;\
- float: none;\
- display: inline-block;\
- width: auto;\
- height: auto;\
- }\
-\
- html {\
- margin: 0;\
- padding: 0;\
- height: 100%;\
- }\
-\
- h1 {\
- background: transparent;\
- margin-top: 10px;\
- display: block;\
- width: 219px;\
- height: 87px;\
- float: left;\
- text-indent: 100%;\
- white-space: nowrap;\
- overflow: hidden;\
- }\
-\
- h2 {\
- background: transparent;\
- margin-top: 58px;\
- margin-bottom: 40px;\
- width: 200px;\
- height: 18px;\
- float: right;\
- text-indent: 100%;\
- white-space: nowrap;\
- overflow: hidden;\
- }\
-\
- p {\
- margin-top: 0;\
- text-align: justify;\
- }\
-\
- .weather-icon {\
- font-size: 5em;\
- color: #FF9800;\
- text-align: center;\
- }\
-\
- .temperature {\
- font-size: 3em;\
- font-weight: bold;\
- color: #E91E63;\
- text-align: center;\
- }\
-\
- /* Add transition to all elements */\
- * {\
- transition: all 0.3s ease;\
- }\
-\
- /* Example of hover effect */\
- .header:hover {\
- background-color: #00BCD4;\
- }\
-\
- .content:hover {\
- box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);\
- transform: translateY(-3px);\
- }\
-\
-    </style>\n</head>\n<body>\n    <header class=\"header\">\n        <h1>Multi-Agents Weather by Gemini, GPT, Anthropic</h1>\n    </header>\n\
-    <div class=\"content\">\n        <p>The weather in Miami was asked.</p>\n        <div class=\"weather-icon\">☀️</div>\n        <p class=\"temperature\">27°C</p>\n        <p>The weather in Miami is Partly cloudy.</p>\n    </div>\n\
-    <footer class=\"footer\">\n        <div id=\"datetime\"></div>\n    </footer>\n\
-    <script>\n        function updateDateTime() {\
-            var datetimeElement = document.getElementById(\"datetime\");\
-            var now = new Date();\
-            var dateTimeString = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();\
-            datetimeElement.textContent = dateTimeString;\
-        }\
-\
-        setInterval(updateDateTime, 1000);\
-        updateDateTime(); // Initial call to set the time immediately\
-    </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Agents Weather by Gemini, GPT, Anthropic</title>
+    <style>
+        body {
+            font: 75% georgia, sans-serif;
+            line-height: 1.88889;
+            color: #555753;
+            background: linear-gradient(to bottom, #B0E0E6, #ADD8E6);
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s ease;
+        }
+
+        .header {
+            background-color: #26C6DA;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-size: 2.5em;
+        }
+
+        .content {
+            padding: 20px;
+            line-height: 1.6;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            width: 100%;
+            flex-shrink: 0;
+            position: relative;
+            bottom: 0;
+        }
+
+        #datetime {
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 20px;
+            color: #26C6DA;
+            transition: color 0.3s ease;
+        }
+
+        #datetime:hover {
+            color: #00BCD4;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            background: transparent;
+            margin-top: 10px;
+            display: block;
+            width: 219px;
+            height: 87px;
+            float: left;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        h2 {
+            background: transparent;
+            margin-top: 58px;
+            margin-bottom: 40px;
+            width: 200px;
+            height: 18px;
+            float: right;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        p {
+            margin-top: 0;
+            text-align: justify;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        /* Weather Icon */
+        .weather-icon {
+            font-size: 5em;
+            color: #FFC107;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Temperature Display */
+        .temperature {
+            font-size: 2em;
+            font-weight: bold;
+            color: #E91E63;
+            text-align: center;
+        }
+
+        /* Interactive Elements */
+        #datetime {
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 20px;
+            color: #26C6DA;
+            transition: color 0.3s ease;
+        }
+
+        #datetime:hover {
+            color: #00BCD4;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .weather-icon {
+                font-size: 4em;
+            }
+
+            .temperature {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Multi-Agents Weather by Gemini, GPT, Anthropic</h1>
+    </div>
+
+    <div class="content">
+        <section>
+            <h2>City</h2>
+            <p>The city asked for was Miami.</p>
+        </section>
+
+        <section>
+            <h2>General Weather Information</h2>
+            <p>The weather in Miami is typically warm and sunny, with high humidity. Expect temperatures in the range of 70-90°F (21-32°C) year-round. There can be occasional rain showers, especially during the summer months. Hurricanes are a potential threat during the Atlantic hurricane season, which runs from June 1st to November 30th.</p>
+        </section>
+
+        <section>
+            <h2>Current Weather</h2>
+            <div class="weather-icon">☁️</div>
+            <p class="temperature">The weather in Miami is Partly cloudy with a temperature of 27°C.</p>
+        </section>
+
+        <section>
+            <div id="datetime"></div>
+        </section>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Multi-Agents Weather. All rights reserved.</p>
+    </div>
+
+    <script>
+        function updateDateTime() {
+            var now = new Date();
+            var dateTimeString = now.toLocaleString();
+            document.getElementById('datetime').textContent = dateTimeString;
+        }
+
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+    </script>
+
+</body>
+</html>
