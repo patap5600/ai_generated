@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather in Rennes</title>
+    <title>Multi-Agents Weather</title>
     <style>
         body {
             font: 75% georgia, sans-serif;
             line-height: 1.88889;
             color: #555753;
-            background: linear-gradient(to right, #AEE2FF, #E0F4FF);
+            background: linear-gradient(to bottom, #B0E0E6, #87CEFA);
             margin: 0;
             padding: 0;
             display: flex;
@@ -22,13 +22,7 @@
             color: white;
             text-align: center;
             padding: 1em 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .header h1 {
-            color: white;
-            text-shadow: 2px 2px 4px #000000;
-            font-size: 2.5em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .content {
@@ -38,12 +32,13 @@
             margin: 20px auto;
             background-color: #fff;
             border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: box-shadow 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+            flex: 1;
         }
 
         .content:hover {
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
         }
 
         .footer {
@@ -53,7 +48,6 @@
             padding: 1em 0;
             width: 100%;
             flex-shrink: 0;
-            margin-top: auto;
         }
 
         #datetime {
@@ -72,68 +66,64 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
+        header h1 {
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-size: 2.5em;
+            text-indent: 0;
+            white-space: normal;
+            overflow: visible;
+            float: none;
+            display: inline-block;
+            width: auto;
+            height: auto;
+        }
+        h1 {
+          font-size: 3em;
+          color: #333;
+          text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+        html {
+            margin: 0;
+            padding: 0;
+        }
+
         h2 {
             color: #26C6DA;
-            margin-top: 1.5em;
-            border-bottom: 2px solid #26C6DA;
-            padding-bottom: 0.5em;
+            margin-top: 20px;
         }
 
         p {
-            margin-bottom: 1em;
-            color: #333;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .content {
-                width: 95%;
-                padding: 15px;
-            }
-
-            .header h1 {
-                font-size: 2em;
-            }
+            margin-top: 0;
+            text-align: justify;
+            font-size: 1.1em;
+            color: #555;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
-    </header>
-
-    <div class="content">
-        <section>
-            <h2>Weather Information</h2>
-            <p>The weather in Rennes was asked for.</p>
-            <p>General information: Mostly cloudy.</p>
-            <p>Current temperature: 16°C.</p>
-        </section>
-
-        <section>
-            <h2>City Climate</h2>
-            <p>Rennes has a temperate oceanic climate, characterized by mild winters and warm summers. Rainfall is fairly consistent throughout the year.</p>
-        </section>
-
-        <section>
-            <h2>Live Date and Time</h2>
-            <div id="datetime"></div>
-        </section>
+    <div class="header">
+        <h1>Multi-Agents Weather by Gemini, GPT, Anthropic</h1>
     </div>
-
-    <footer class="footer">
-        &copy; 2024 Multi-Agents Weather
-    </footer>
-
+    <div class="content">
+        <p>The weather was asked for Miami.</p>
+        <p>General information about the weather: Mostly cloudy.</p>
+        <p>Current temperature: 27°C.</p>
+        <div id="datetime"></div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Multi-Agents Weather. All rights reserved.</p>
+    </div>
     <script>
         function updateDateTime() {
             const now = new Date();
-            const datetimeElement = document.getElementById("datetime");
+            const datetimeElement = document.getElementById('datetime');
             datetimeElement.textContent = now.toLocaleString();
         }
 
+        updateDateTime();
         setInterval(updateDateTime, 1000);
-        updateDateTime(); // Initial call to display сразу
     </script>
 </body>
 </html>
