@@ -3,116 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Agents Weather</title>
+    <title>Multi-Agents Weather by Gemini,GPT,Anthropic</title>
     <style>
- body {
- font: 75% georgia, sans-serif;
- line-height: 1.88889;
- color: #555753;
- background: linear-gradient(to right, #A8D0E6, #63A4FF);
- margin: 0;
- padding: 0;
- display: flex;
- flex-direction: column;
- min-height: 100vh;
- }
+        body {
+            font: 75% georgia, sans-serif;
+            line-height: 1.88889;
+            color: #555753;
+            background: linear-gradient(to right, #A8E6CE, #DCE2F0);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
- .header {
- background-color: lightgreen;
- color: white;
- text-align: center;
- padding: 1em 0;
- box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
- }
+        .header {
+            background-color: #26C6DA;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
- .header h1 {
- color: white;
- text-shadow: 2px 2px 4px #000000;
- font-size: 2.5em;
- }
+        .header h1 {
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-size: 2.5em;
+        }
 
- .content {
- padding: 20px;
- line-height: 1.6;
- width: 80%;
- margin: 20px auto;
- background-color: #f9f9f9;
- border-radius: 8px;
- box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
- flex: 1;
- }
+        .content {
+            padding: 20px;
+            line-height: 1.6;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
 
- .content p {
- margin-bottom: 15px;
- color: #333;
- }
+        .content:hover {
+            transform: translateY(-5px);
+        }
 
- .footer {
- background-color: #333;
- color: white;
- text-align: center;
- padding: 1em 0;
- width: 100%;
- flex-shrink: 0;
- margin-top: auto; /* Push footer to the bottom */
- }
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            width: 100%;
+            flex-shrink: 0;
+            margin-top: auto;
+        }
 
- #datetime {
- font-size: 1.2em;
- text-align: center;
- margin-top: 20px;
- color: #26C6DA;
- }
+        #datetime {
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 20px;
+            color: #26C6DA;
+        }
 
- .container {
- width: 80%;
- margin: 20px auto;
- background-color: #fff;
- padding: 20px;
- border-radius: 8px;
- box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
- }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
- .weather-icon {
- font-size: 3em;
- color: #26C6DA;
- }
+        /* Additional styles for weather-specific elements */
+        .weather-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
 
- /* Add hover effects */
- .header:hover, .content:hover, .footer:hover {
- opacity: 0.9;
- transition: opacity 0.3s ease;
- }
+        .temperature {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        /* Media query for responsive design */
+        @media (max-width: 768px) {
+            .content {
+                width: 95%;
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Multi-Agents Weather by Gemini, GPT, Anthropic</h1>
-    </div>
+    <header class="header">
+        <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
+    </header>
 
-    <div class="content">
-        <p>The weather for the city asked for was Miami.</p>
-        <p>General information about the weather: Partly cloudy.</p>
-        <p>The current temperature is 27°C.</p>
+    <section class="content">
+        <p>The weather information was requested for: San Francisco</p>
+        <div class="weather-icon">☀️</div>
+        <p class="temperature">Current Temperature: 12°C</p>
+        <p>The weather in San francisco is Clear.</p>
         <div id="datetime"></div>
-    </div>
+    </section>
 
-    <div class="footer">
-        <p>&copy; 2024 Multi-Agents Weather</p>
-    </div>
+    <footer class="footer">
+        <p>&copy; 2024 Multi-Agents Weather. All rights reserved.</p>
+    </footer>
 
     <script>
- function updateDateTime() {
- var now = new Date();
- var dateTimeString = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();
- document.getElementById('datetime').textContent = dateTimeString;
- }
+        function updateDateTime() {
+            const now = new Date();
+            const datetimeElement = document.getElementById('datetime');
+            datetimeElement.textContent = now.toLocaleString();
+        }
 
- // Update every second
- setInterval(updateDateTime, 1000);
-
- // Initial call to set the date and time immediately
- updateDateTime();
+        setInterval(updateDateTime, 1000);
+        updateDateTime(); // Initial call to display the time immediately
     </script>
 </body>
 </html>
