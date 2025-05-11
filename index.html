@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Agents Weather by Gemini, GPT, Anthropic</title>
+    <title>Multi-Agents Weather</title>
     <style>
         body {
             font: 75% georgia, sans-serif;
             line-height: 1.88889;
             color: #555753;
-            background: linear-gradient(to right, #AEE2FF, #E0F4FF);
+            background: linear-gradient(to right, #ADD8E6, #B0E0E6);
             margin: 0;
             padding: 0;
             display: flex;
@@ -18,11 +18,10 @@
         }
 
         .header {
-            background-color: lightgreen;
+            background-color: #26C6DA;
             color: white;
             text-align: center;
             padding: 1em 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .content {
@@ -30,9 +29,9 @@
             line-height: 1.6;
             width: 80%;
             margin: 20px auto;
-            background-color: #f9f9f9;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            background-color: #E0FFFF;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease-in-out;
         }
 
@@ -47,7 +46,6 @@
             padding: 1em 0;
             width: 100%;
             flex-shrink: 0;
-            margin-top: auto;
         }
 
         #datetime {
@@ -58,12 +56,12 @@
         }
 
         .container {
-            width: 70%;
-            margin: 30px auto;
+            width: 80%;
+            margin: 20px auto;
             background-color: #fff;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
@@ -101,21 +99,43 @@
             text-indent: 100%;
             white-space: nowrap;
             overflow: hidden;
-            color: #558B2F;
+            color: #26C6DA;
         }
 
         p {
             margin-top: 0;
             text-align: justify;
-            color: #333;
             font-size: 1.1em;
+            color: #333;
         }
 
-        #weather-icon {
-            font-size: 5em;
+        .weather-icon {
+            text-align: center;
+            font-size: 3em;
             margin-bottom: 10px;
-            color: #FFD700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #temperature {
+            font-size: 2em;
+            font-weight: bold;
+            color: #FF4500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                width: 95%;
+                margin: 10px auto;
+                padding: 15px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            #temperature {
+                font-size: 1.5em;
+            }
         }
     </style>
 </head>
@@ -125,14 +145,20 @@
     </header>
 
     <div class="content">
-        <div id="datetime"></div>
+        <section>
+            <h2>Weather in Miami</h2>
+            <p>You asked for the weather in Miami.</p>
+        </section>
 
-        <div class="container">
-            <div id="weather-icon">&#x2601;</div>
-            <p>The weather was asked for: Miami</p>
-            <p>General information about the weather: Cloudy</p>
-            <p>Current temperature and weather: 29°C.</p>
-        </div>
+        <section>
+            <div class="weather-icon">☁️</div>
+            <p>The weather in Miami is Partly cloudy.</p>
+            <p id="temperature">Temperature: 27°C</p>
+        </section>
+
+        <section>
+            <div id="datetime"></div>
+        </section>
     </div>
 
     <footer class="footer">
@@ -146,8 +172,8 @@
             datetimeElement.textContent = now.toLocaleString();
         }
 
-        updateDateTime();
         setInterval(updateDateTime, 1000);
+        updateDateTime(); // Initial call to display the time immediately
     </script>
 </body>
 </html>
