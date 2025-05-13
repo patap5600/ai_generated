@@ -12,6 +12,9 @@
     background: linear-gradient(to right, #B0E0E6, #ADD8E6);
     margin: 0;
     padding: 0;
+	min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
@@ -31,6 +34,7 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+	flex: 1;
 }
 
 .content:hover {
@@ -44,6 +48,8 @@
     padding: 1em 0;
     width: 100%;
     flex-shrink: 0;
+	bottom: 0;
+    left: 0;
 }
 
 #datetime {
@@ -84,24 +90,24 @@ h1 {
     background: transparent;
     margin-top: 10px;
     display: block;
-    width: 219px;
-    height: 87px;
-    float: left;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
+    width: auto;
+    height: auto;
+    float: none;
+    text-indent: 0;
+    white-space: normal;
+    overflow: visible;
 }
 
 h2 {
     background: transparent;
-    margin-top: 58px;
-    margin-bottom: 40px;
-    width: 200px;
-    height: 18px;
-    float: right;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: auto;
+    height: auto;
+    float: none;
+    text-indent: 0;
+    white-space: normal;
+    overflow: visible;
 }
 
 p {
@@ -124,18 +130,18 @@ h2 {
 
     <div class="content">
         <section>
-            <h2>Weather in San Francisco</h2>
-            <p>You asked for the weather in San Francisco.</p>
+            <h2>Weather in Miami</h2>
+            <p>You asked for the weather in Miami.</p>
         </section>
 
         <section>
             <h2>General Weather Information</h2>
-            <p>The weather in San francisco is Clear with periodic clouds.</p>
+            <p>The weather in Miami is Rain.</p>
         </section>
 
         <section>
             <h2>Current Temperature</h2>
-            <p>The temperature is 13°C.</p>
+            <p>The temperature is 25°C.</p>
         </section>
 
         <div id="datetime">
