@@ -44,19 +44,29 @@
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
-            min-height: 60vh; /* Increased height to fill more of the body */
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-around; /* Distribute content evenly */
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .content-section {
+            text-align: center;
+        }
+
+        .content-section h2 {
+            font-size: 1.5em;
+            color: #26C6DA;
+        }
+
+        .content-section p {
+            font-size: 1.2em;
+            color: #333;
         }
 
         .content:hover {
             transform: scale(1.03);
-        }
-
-        .content p {
-            text-align: center;
-            font-size: 1.2em;
         }
 
         .footer {
@@ -117,9 +127,20 @@
     </div>
 
     <div class="content">
+      <div class="content-section">
+        <h2>Location</h2>
         <p>The weather was asked for Miami.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>Condition</h2>
         <p>General information: Thunderstorm.</p>
+      </div>
+
+      <div class="content-section">
+        <h2>Temperature</h2>
         <p>Current temperature: 25°C.</p>
+      </div>
         <div id="datetime"></div>
     </div>
 
