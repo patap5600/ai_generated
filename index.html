@@ -3,64 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Agents Weather by Gemini,GPT,Anthropic</title>
+    <title>Multi-Agents Weather by Gemini, GPT, Anthropic</title>
     <style>
-        body {
+ body {
             font: 75% georgia, sans-serif;
             line-height: 1.88889;
             color: #555753;
-            background: linear-gradient(120deg, #a8e0da, #a37979);
+            background: linear-gradient(to right, #AEE2FF, #D8E2DC, #AEE2FF);
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
         .header {
-            background-color: lightgreen;
+            background-color: #26C6DA;
             color: white;
             text-align: center;
             padding: 1em 0;
-            width: 100%;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .header h1 {
-            color: white;
-            text-shadow: 2px 2px 4px #000000;
-            font-size: 2.5em;
-            margin: 0.5em 0;
         }
 
         .content {
             padding: 20px;
             line-height: 1.6;
             width: 80%;
-            max-width: 800px;
             margin: 20px auto;
-            background-color: #f9f9f9;
-            border-radius: 12px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
-            flex: 1;
-        }
-
-        .content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .content h2 {
-            color: #26C6DA;
-            border-bottom: 2px solid #26C6DA;
-            padding-bottom: 0.5em;
-            margin-top: 1.5em;
-        }
-
-        .content p {
-            margin-bottom: 1em;
-            color: #333;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .footer {
@@ -69,7 +37,7 @@
             text-align: center;
             padding: 1em 0;
             width: 100%;
-            border-top: 3px solid #26C6DA;
+            flex-shrink: 0;
         }
 
         #datetime {
@@ -79,66 +47,89 @@
             color: #26C6DA;
         }
 
-        .weather-icon {
-            font-size: 3em;
-            margin-bottom: 0.5em;
-            color: #f0ad4e;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        header h1 {
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-size: 2em;
+            text-indent: 0;
+            white-space: normal;
+            overflow: visible;
+            float: none;
+            display: inline-block;
+            width: auto;
+            height: auto;
         }
 
-        body, .header, .content, .footer {
-            animation: fadeIn 1s ease-in-out;
+        html {
+            margin: 0;
+            padding: 0;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .content {
-                width: 95%;
-                padding: 15px;
-            }
+        h1 {
+            background: transparent;
+            margin-top: 10px;
+            display: block;
+            width: 219px;
+            height: 87px;
+            float: left;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
 
-            .header h1 {
-                font-size: 2em;
-            }
+        h2 {
+            background: transparent;
+            margin-top: 58px;
+            margin-bottom: 40px;
+            width: 200px;
+            height: 18px;
+            float: right;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
 
-            #datetime {
-                font-size: 1em;
-            }
+        p {
+            margin-top: 0;
+            text-align: justify;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
-    </header>
 
-    <section class="content">
-        <div class="weather-icon">☀️</div>
-        <h2>Weather in London</h2>
-        <p>The weather in London was asked for.</p>
-        <p>General information about the weather: Sunny.</p>
-        <p>Current temperature: 18°C.</p>
+    <div class="header">
+        <h1>Multi-Agents Weather by Gemini, GPT, Anthropic</h1>
+    </div>
+
+    <div class="content">
+        <p>The weather was requested for: Miami</p>
+        <p>General weather information: Mostly cloudy</p>
+        <p>Current temperature: 25°C</p>
         <div id="datetime"></div>
-    </section>
+    </div>
 
-    <footer class="footer">
-        &copy; 2024 Weather Information
-    </footer>
+    <div class="footer">
+        <p>&copy; 2024 Multi-Agents Weather. All rights reserved.</p>
+    </div>
 
     <script>
         function updateDateTime() {
-            const now = new Date();
-            const datetimeElement = document.getElementById('datetime');
+            var datetimeElement = document.getElementById("datetime");
+            var now = new Date();
             datetimeElement.textContent = now.toLocaleString();
         }
 
         setInterval(updateDateTime, 1000);
-        updateDateTime(); // Initial call to display immediately
     </script>
+
 </body>
 </html>
