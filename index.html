@@ -12,6 +12,9 @@
             background: linear-gradient(to right, #B0E0E6, #ADD8E6);
             margin: 0;
             padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .header {
@@ -30,6 +33,7 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
         }
 
         .footer {
@@ -39,7 +43,13 @@
             padding: 1em 0;
             width: 100%;
             flex-shrink: 0;
-            white-space: nowrap; /* Added to keep the footer on one line */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer p {
+            margin: 0;
         }
 
         #datetime {
@@ -62,37 +72,37 @@
             color: white;
             text-shadow: 2px 2px 4px #000000;
             font-size: 2em;
-            text-indent: 0;
             white-space: normal;
             overflow: visible;
             float: none;
             display: inline-block;
             width: auto;
             height: auto;
+            text-indent: 0;
         }
 
         h1 {
             background: transparent;
             margin-top: 10px;
             display: block;
-            width: 219px;
-            height: 87px;
-            float: left;
-            text-indent: 100%;
-            white-space: nowrap;
-            overflow: hidden;
+            width: auto;
+            height: auto;
+            float: none;
+            white-space: normal;
+            overflow: visible;
+            text-indent: 0;
         }
 
         h2 {
             background: transparent;
-            margin-top: 58px;
-            margin-bottom: 40px;
-            width: 200px;
-            height: 18px;
-            float: right;
-            text-indent: 100%;
-            white-space: nowrap;
-            overflow: hidden;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            width: auto;
+            height: auto;
+            float: none;
+            white-space: normal;
+            overflow: visible;
+            text-indent: 0;
         }
 
         p {
@@ -134,19 +144,19 @@
 
     <div class="content">
         <section>
-            <h2>Weather in Madrid</h2>
-            <p>You asked for the weather in Madrid.</p>
+            <h2>Weather in Rennes, France</h2>
+            <p>You asked for the weather in Rennes, France.</p>
         </section>
 
         <section>
             <h2>General Weather Information</h2>
-            <p class="weather-icon">⛅</p>
-            <p>The weather is Mostly cloudy.</p>
+            <p class="weather-icon">☀️</p>
+            <p>The weather is Clear.</p>
         </section>
 
         <section>
             <h2>Temperature</h2>
-            <p class="temperature">10°C</p>
+            <p class="temperature">11°C</p>
         </section>
 
         <section>
