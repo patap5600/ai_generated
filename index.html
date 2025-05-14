@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Agents Weather</title>
+    <title>Multi-Agents Weather by Gemini, GPT, Anthropic</title>
     <style>
         body {
             font: 75% georgia, sans-serif;
             line-height: 1.88889;
             color: #555753;
-            background: linear-gradient(to right, #B0E0E6, #ADD8E6);
+            background: linear-gradient(to bottom, #E0F7FA, #B2EBF2);
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
         .header {
-            background-color: #26C6DA;
+            background-color: #00BCD4;
             color: white;
             text-align: center;
             padding: 1em 0;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
 
         .content {
@@ -33,30 +30,30 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            flex: 1;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .content:hover {
+            transform: translateY(-5px);
         }
 
         .footer {
-            background-color: #333;
+            background-color: #263238;
             color: white;
             text-align: center;
             padding: 1em 0;
             width: 100%;
             flex-shrink: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .footer p {
-            margin: 0;
+            position: fixed;
+            bottom: 0;
+            left: 0;
         }
 
         #datetime {
             font-size: 1.2em;
             text-align: center;
             margin-top: 20px;
-            color: #26C6DA;
+            color: #00BCD4;
         }
 
         .container {
@@ -71,68 +68,86 @@
         header h1 {
             color: white;
             text-shadow: 2px 2px 4px #000000;
-            font-size: 2em;
+            font-size: 2.5em;
+            text-indent: 0;
             white-space: normal;
             overflow: visible;
             float: none;
             display: inline-block;
             width: auto;
             height: auto;
-            text-indent: 0;
         }
 
         h1 {
             background: transparent;
             margin-top: 10px;
             display: block;
-            width: auto;
-            height: auto;
-            float: none;
-            white-space: normal;
-            overflow: visible;
-            text-indent: 0;
+            width: 219px;
+            height: 87px;
+            float: left;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         h2 {
             background: transparent;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            width: auto;
-            height: auto;
-            float: none;
-            white-space: normal;
-            overflow: visible;
-            text-indent: 0;
+            margin-top: 58px;
+            margin-bottom: 40px;
+            width: 200px;
+            height: 18px;
+            float: right;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #00BCD4;
+            font-size: 2em;
         }
 
         p {
             margin-top: 0;
             text-align: justify;
+            font-size: 1.1em;
+            color: #333;
         }
 
-        /* Additional styling for improved appearance */
+        /* Weather Icon Styles */
         .weather-icon {
-            font-size: 3em;
+            font-size: 5em;
+            color: #FFC107;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Section Styles */
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #FAFAFA;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        }
+
+        .section h2 {
+            color: #0097A7;
+            border-bottom: 2px solid #0097A7;
+            padding-bottom: 5px;
             margin-bottom: 10px;
         }
 
-        .temperature {
-            font-size: 2em;
-            color: #FF6B6B;
-        }
-
-        /* Hover effects */
-        .content:hover {
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            transition: box-shadow 0.3s ease;
-        }
-
-        /* Responsive design */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container, .content {
+            .content {
                 width: 95%;
-                margin: 10px auto;
                 padding: 15px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .weather-icon {
+                font-size: 4em;
             }
         }
     </style>
@@ -143,24 +158,24 @@
     </header>
 
     <div class="content">
-        <section>
-            <h2>Weather in Rennes, France</h2>
-            <p>You asked for the weather in Rennes, France.</p>
+        <section class="section">
+            <h2>Weather in Miami</h2>
+            <p>You asked for the weather in Miami.</p>
         </section>
 
-        <section>
+        <section class="section">
             <h2>General Weather Information</h2>
-            <p class="weather-icon">☀️</p>
-            <p>The weather is Clear.</p>
+            <p>The weather in Miami is Sunny.</p>
         </section>
 
-        <section>
-            <h2>Temperature</h2>
-            <p class="temperature">11°C</p>
+        <section class="section">
+            <h2>Current Temperature</h2>
+            <p>The temperature is 28°C.</p>
         </section>
 
-        <section>
-            <h2 id="datetime"></h2>
+        <section class="section">
+            <h2>Live Date and Time</h2>
+            <div id="datetime"></div>
         </section>
     </div>
 
@@ -170,14 +185,16 @@
 
     <script>
         function updateDateTime() {
-            const datetimeElement = document.getElementById("datetime");
-            const now = new Date();
-            const dateTimeString = now.toLocaleString();
-            datetimeElement.textContent = `Current Date and Time: ${dateTimeString}`;
+            var now = new Date();
+            var dateTimeString = now.toLocaleString();
+            document.getElementById('datetime').textContent = dateTimeString;
         }
 
+        // Update every second
         setInterval(updateDateTime, 1000);
-        updateDateTime(); // Initial call to display date and time immediately
+
+        // Initial call to display immediately
+        updateDateTime();
     </script>
 </body>
 </html>
