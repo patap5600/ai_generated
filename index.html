@@ -10,10 +10,11 @@
             line-height: 1.88889;
             color: #555753;
             margin: 0;          
-            background: linear-gradient(to bottom, #E0F7FA, #B2EBF2);
+            background: #E0F7FA; /* Default background color */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            transition: background-color 0.3s ease; /* Add transition for smooth color change */
         }
 
         .header {
@@ -169,7 +170,7 @@
 
         // Function to change background color
         document.getElementById('backgroundColor').addEventListener('input', function() {
-            document.body.style.backgroundColor = this.value;
+            document.body.style.background = this.value;
         });
     </script>
 
