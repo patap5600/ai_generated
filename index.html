@@ -15,6 +15,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            transition: background-color 0.3s ease;
         }
 
         .header {
@@ -126,6 +127,11 @@
             font-size: 1.1em;
             line-height: 1.7;
         }
+
+        #colorPickerContainer {
+            text-align: center;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -140,6 +146,10 @@
             <p>General information about the weather:</p>
             <p>The current temperature and weather: The weather in Miami is Sunny with a temperature of 27°C.</p>
         </section>
+    </div>
+    <div id="colorPickerContainer">
+        <label for="backgroundColorPicker">Change Body Background Color:</label>
+        <input type="color" id="backgroundColorPicker" value="#f0f0f0">
     </div>
 
     <div class="footer">
@@ -156,6 +166,12 @@
 
         setInterval(updateDateTime, 1000);
         updateDateTime();
+
+        const colorPicker = document.getElementById("backgroundColorPicker");
+
+        colorPicker.addEventListener("input", function() {
+            document.body.style.backgroundColor = colorPicker.value;
+        });
     </script>
 </body>
 </html>
