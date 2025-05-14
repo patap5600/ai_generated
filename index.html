@@ -15,7 +15,6 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            transition: background-color 0.3s ease;
         }
 
         .header {
@@ -30,13 +29,6 @@
             color: white;
             text-shadow: 2px 2px 4px #000000;
             font-size: 2em;
-            text-indent: 0;
-            white-space: normal;
-            overflow: visible;
-            float: none;
-            display: inline-block;
-            width: auto;
-            height: auto;
         }
 
         .content {
@@ -65,13 +57,11 @@
             flex-shrink: 0;
             position: relative;
             bottom: 0;
-            transition: background-color 0.3s ease;
         }
 
         .footer p {
             color: white;
         }
-
 
         .footer:hover {
             background-color: #555;
@@ -85,52 +75,17 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        #colorPickerContainer {
+            text-align: center;
+            margin-top: 20px;
         }
 
         h1 {
-            background: transparent;
-            margin-top: 10px;
-            display: block;
-            width: auto;
-            height: auto;
-            float: none;
-            text-indent: 0;
-            white-space: normal;
-            overflow: visible;
             color: white;
         }
 
         h2 {
-            background: transparent;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            width: auto;
-            height: auto;
-            float: none;
-            text-indent: 0;
-            white-space: normal;
-            overflow: visible;
             color: #26C6DA;
-        }
-
-        p {
-            margin-top: 0;
-            text-align: justify;
-            color: #333;
-            font-size: 1.1em;
-            line-height: 1.7;
-        }
-
-        #colorPickerContainer {
-            text-align: center;
-            margin-top: 20px;
         }
     </style>
 </head>
@@ -147,8 +102,9 @@
             <p>The current temperature and weather: The weather in Miami is Sunny with a temperature of 27°C.</p>
         </section>
     </div>
+
     <div id="colorPickerContainer">
-        <label for="backgroundColorPicker">Change Body Background Color:</label>
+        <label for="backgroundColorPicker">Change Content Background Color:</label>
         <input type="color" id="backgroundColorPicker" value="#f0f0f0">
     </div>
 
@@ -168,9 +124,10 @@
         updateDateTime();
 
         const colorPicker = document.getElementById("backgroundColorPicker");
+        const contentDiv = document.querySelector(".content");
 
         colorPicker.addEventListener("input", function() {
-            document.body.style.backgroundColor = colorPicker.value;
+            contentDiv.style.backgroundColor = colorPicker.value;
         });
     </script>
 </body>
