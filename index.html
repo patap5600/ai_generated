@@ -3,122 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Agents Weather by Gemini, GPT, Anthropic</title>
+    <title>Multi-Agents Weather</title>
     <style>
- body {
-    font: 75% georgia, sans-serif;
-    line-height: 1.88889;
-    color: #555753;
-    background: linear-gradient(to right, #AEEEEE, #FFFFFF);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
+        body {
+            font: 75% georgia, sans-serif;
+            line-height: 1.88889;
+            color: #555753;
+            background: linear-gradient(to right, #B0E0E6, #ADD8E6);
+            margin: 0;
+            padding: 0;
+        }
 
-.header {
-    background-color: #26C6DA;
-    color: white;
-    text-align: center;
-    padding: 1em 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+        .header {
+            background-color: #26C6DA;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-.content {
-    padding: 20px;
-    line-height: 1.6;
-    width: 80%;
-    margin: 20px auto;
-    background-color: #f9f9f9;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-}
+        .content {
+            padding: 20px;
+            line-height: 1.6;
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-.content:hover {
-    transform: translateY(-5px);
-}
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            width: 100%;
+            flex-shrink: 0;
+        }
 
-.footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1em 0;
-    width: 100%;
-    flex-shrink: 0;
-    
-    bottom: 0;
-    left: 0;
-}
+        #datetime {
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 20px;
+            color: #26C6DA;
+        }
 
-.footer p {
-    color: #fff; /* Brighter text color */
-}
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
-#datetime {
-    font-size: 1.2em;
-    text-align: center;
-    margin-top: 20px;
-    color: #26C6DA;
-}
+        header h1 {
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-size: 2em;
+            text-indent: 0;
+            white-space: normal;
+            overflow: visible;
+            float: none;
+            display: inline-block;
+            width: auto;
+            height: auto;
+        }
 
-.container {
-    width: 80%;
-    margin: 20px auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+        h1 {
+            background: transparent;
+            margin-top: 10px;
+            display: block;
+            width: 219px;
+            height: 87px;
+            float: left;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
 
-header h1 {
-    color: white;
-    text-shadow: 2px 2px 4px #000000;
-    font-size: 2.5em;
-    text-indent: 0;
-    white-space: normal;
-    overflow: visible;
-    float: none;
-    display: inline-block;
-    width: auto;
-    height: auto;
-}
+        h2 {
+            background: transparent;
+            margin-top: 58px;
+            margin-bottom: 40px;
+            width: 200px;
+            height: 18px;
+            float: right;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+        }
 
-h1 {
-    background: transparent;
-    margin-top: 10px;
-    display: block;
-    width: 219px;
-    height: 87px;
-    float: left;
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
+        p {
+            margin-top: 0;
+            text-align: justify;
+        }
 
-h2 {
-    color: #26C6DA;
-    margin-top: 15px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
-}
+        /* Additional styling for improved appearance */
+        .weather-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
 
-p {
-    margin-top: 0;
-    text-align: justify;
-    color: #333;
-    font-size: 1.1em;
-}
+        .temperature {
+            font-size: 2em;
+            color: #FF6B6B;
+        }
 
-/* Weather Icon */
-.weather-icon {
-    font-size: 3em;
-    margin-right: 10px;
-    vertical-align: middle;
-}
+        /* Hover effects */
+        .content:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease;
+        }
 
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container, .content {
+                width: 95%;
+                margin: 10px auto;
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -128,24 +133,19 @@ p {
 
     <div class="content">
         <section>
-            <h2>Weather in San Francisco</h2>
-            <p>You asked for the weather in San Francisco.</p>
-            <p><i class="weather-icon">☀️</i>The weather in San francisco is Sunny.</p>
-            <p>The temperature is 16°C.</p>
+            <h2>Weather in London</h2>
+            <p>You asked for the weather in London.</p>
         </section>
 
         <section>
-            <h2>Weather in Miami</h2>
-            <p>You asked for the weather in Miami.</p>
-            <p><i class="weather-icon">☀️</i>The weather in Miami is Clear.</p>
-            <p>The temperature is 27°C.</p>
+            <h2>General Weather Information</h2>
+            <p class="weather-icon">☀️</p>
+            <p>The weather is Clear.</p>
         </section>
-        
+
         <section>
-            <h2>Weather in New York</h2>
-            <p>You asked for the weather in New York.</p>
-            <p><i class="weather-icon">🌧️</i>The weather in New York is Light rain.</p>
-            <p>The temperature is 17°C.</p>
+            <h2>Temperature</h2>
+            <p class="temperature">12°C</p>
         </section>
 
         <section>
@@ -159,13 +159,14 @@ p {
 
     <script>
         function updateDateTime() {
-            const now = new Date();
             const datetimeElement = document.getElementById("datetime");
-            datetimeElement.textContent = now.toLocaleString();
+            const now = new Date();
+            const dateTimeString = now.toLocaleString();
+            datetimeElement.textContent = `Current Date and Time: ${dateTimeString}`;
         }
 
         setInterval(updateDateTime, 1000);
-        updateDateTime();
+        updateDateTime(); // Initial call to display date and time immediately
     </script>
 </body>
 </html>
