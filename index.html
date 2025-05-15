@@ -10,7 +10,7 @@ body {
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0 0 0 220px; /* Add left margin to body */
+    margin: 0; /* Remove body margin */
     padding: 0;
     min-height: 100vh;
     display: flex;
@@ -18,11 +18,11 @@ body {
 }
 
 .header {
-    background-color: #003300; /* Even darker header background */
-    color: #FFFFFF; /* White header text */
+    background-color: #003300;
+    color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .content {
@@ -37,14 +37,14 @@ body {
 }
 
 .footer {
-    background-color: #000000; /* Even darker footer background */
-    color: #FFFFFF; /* Lighter footer text */
+    background-color: #000000;
+    color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
     width: 100%;
     flex-shrink: 0;
-    bottom: 0;
-    left: 0;
+    /* Stick footer to the bottom */
+    margin-top: auto;
 }
 
 #datetime {
@@ -64,8 +64,8 @@ body {
 }
 
 header h1 {
-    color: #FFFFFF; /* White header text */
-    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000; /* Stronger text shadow */
+    color: #FFFFFF;
+    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000;
     font-size: 2em;
     white-space: normal;
     overflow: visible;
@@ -85,9 +85,10 @@ h1 {
     background: transparent;
     margin-top: 10px;
     display: block;
-    height: 87px;
-    white-space: nowrap;
-    overflow: hidden;
+    height: auto; /* Modified to auto to fit content */
+    white-space: normal; /* Modified to normal to allow text wrapping */
+    overflow: visible; /* Modified to visible to show all text */
+    width: auto; /* Corrected to auto to allow dynamic width */
 }
 
 h2 {
@@ -117,9 +118,9 @@ p {
 }
 
 .footer p {
-    color: #FFFFFF; /* Much brighter footer text */
-    text-shadow: 1px 1px 2px #000000; /* Add a subtle text shadow */
-    text-align: center; /* Center the footer text */
+    color: #FFFFFF;
+    text-shadow: 1px 1px 2px #000000;
+    text-align: center;
 }
 
 .column-menu {
@@ -142,6 +143,11 @@ p {
     width: 100%;
 }
 
+#weatherIconPicker {
+    margin-top: 20px;
+    width: 100%;
+}
+
 .dynamic-background {
     transition: background-color 0.5s ease;
 }
@@ -159,6 +165,18 @@ p {
 
         <h3>Background Color</h3>
         <input type="color" id="backgroundColorPicker" value="#f9f9f9">
+
+        <h3>Weather Icon</h3>
+        <select id="weatherIconPicker">
+            <option value="&#x2600;">Clear</option>
+            <option value="&#x2601;">Few Clouds</option>
+            <option value="&#x2602;">Scattered Clouds</option>
+            <option value="&#x2603;">Cloudy</option>
+            <option value="&#x2604;">Rain</option>
+            <option value="&#x2605;">Snow</option>
+            <option value="&#x2606;">Thunderstorm</option>
+            <option value="&#x2607;">Mist</option>
+        </select>
     </div>
 
     <div class="header">
@@ -210,6 +228,13 @@ p {
 
         colorPicker.addEventListener("input", function() {
             contentDiv.style.backgroundColor = colorPicker.value;
+        });
+
+        const weatherIconPicker = document.getElementById("weatherIconPicker");
+        const weatherIconDiv = document.querySelector(".weather-icon");
+
+        weatherIconPicker.addEventListener("change", function() {
+            weatherIconDiv.innerHTML = weatherIconPicker.value;
         });
     </script>
 </body>
