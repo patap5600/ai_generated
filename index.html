@@ -10,7 +10,7 @@ body {
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0; /* Remove body margin */
+    margin: 0;
     padding: 0;
     min-height: 100vh;
     display: flex;
@@ -34,6 +34,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex: 1;
+    margin-left: 220px; /* Add margin to content */
 }
 
 .footer {
@@ -43,8 +44,8 @@ body {
     padding: 1em 0;
     width: 100%;
     flex-shrink: 0;
-    /* Stick footer to the bottom */
     margin-top: auto;
+    margin-left: 220px; /* Add margin to footer */
 }
 
 #datetime {
@@ -85,10 +86,10 @@ h1 {
     background: transparent;
     margin-top: 10px;
     display: block;
-    height: auto; /* Modified to auto to fit content */
-    white-space: normal; /* Modified to normal to allow text wrapping */
-    overflow: visible; /* Modified to visible to show all text */
-    width: auto; /* Corrected to auto to allow dynamic width */
+    height: auto;
+    white-space: normal;
+    overflow: visible;
+    width: auto;
 }
 
 h2 {
