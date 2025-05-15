@@ -55,7 +55,7 @@
             padding: 1em 0;
             width: 100%;
             flex-shrink: 0;
-            position: relative;
+            position: fixed;
             bottom: 0;
         }
 
@@ -127,7 +127,7 @@
         const contentDiv = document.querySelector(".content");
 
         colorPicker.addEventListener("input", function() {
-            contentDiv.style.backgroundColor = colorPicker.value;
+            contentDiv.style.backgroundColor = colorPicker.value + ' !important';
         });
     </script>
 </body>
