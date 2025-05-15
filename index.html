@@ -10,7 +10,7 @@ body {
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0;
+    margin: 0 0 0 220px; /* Add left margin to body */
     padding: 0;
     min-height: 100vh;
     display: flex;
@@ -18,11 +18,11 @@ body {
 }
 
 .header {
-    background-color: #003300;
-    color: #FFFFFF;
+    background-color: #003300; /* Even darker header background */
+    color: #FFFFFF; /* White header text */
     text-align: center;
     padding: 1em 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
 }
 
 .content {
@@ -37,15 +37,14 @@ body {
 }
 
 .footer {
-    background-color: #000000;
-    color: #FFFFFF;
+    background-color: #000000; /* Even darker footer background */
+    color: #FFFFFF; /* Lighter footer text */
     text-align: center;
     padding: 1em 0;
     width: 100%;
     flex-shrink: 0;
     bottom: 0;
     left: 0;
-	margin-top: auto;
 }
 
 #datetime {
@@ -65,8 +64,8 @@ body {
 }
 
 header h1 {
-    color: #FFFFFF;
-    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000;
+    color: #FFFFFF; /* White header text */
+    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000; /* Stronger text shadow */
     font-size: 2em;
     white-space: normal;
     overflow: visible;
@@ -118,10 +117,9 @@ p {
 }
 
 .footer p {
-    color: #FFFFFF;
-    text-shadow: 1px 1px 2px #000000;
-    text-align: center;
-	font-size: 1.2em;
+    color: #FFFFFF; /* Much brighter footer text */
+    text-shadow: 1px 1px 2px #000000; /* Add a subtle text shadow */
+    text-align: center; /* Center the footer text */
 }
 
 .column-menu {
@@ -147,42 +145,6 @@ p {
 .dynamic-background {
     transition: background-color 0.5s ease;
 }
-
-/* Improved Readability */
-body {
-    font-size: 16px; /* Increased base font size */
-    color: #444; /* Slightly darker text for better contrast */
-}
-
-.header {
-    background-color: #004d4d; /* Adjusted header background color */
-    color: #fff; /* White text for better contrast */
-}
-
-.content {
-    background-color: #fff;
-}
-
-.footer {
-    background-color: #222; /* Darker footer background */
-    color: #eee; /* Lighter footer text */
-    position: relative;
-    bottom: 0;
-    width: 100%;
-	font-size: 1.2em;
-}
-
-/* Ensure footer stays at the bottom */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.content {
-    flex: 1; /* Allow content to grow and push footer down */
-}
-
 </style>
 </head>
 <body>
@@ -197,8 +159,6 @@ body {
 
         <h3>Background Color</h3>
         <input type="color" id="backgroundColorPicker" value="#f9f9f9">
-		<input type="text" id="cityInput" placeholder="Enter city">
-		<button onclick="getWeather()">Get Weather</button>
     </div>
 
     <div class="header">
@@ -207,14 +167,23 @@ body {
 
     <div class="content dynamic-background">
         <div class="weather-icon">
-            &#x26C5; 
+            &#x26C5;
         </div>
 
         <h2>Weather Information</h2>
 
-        <p><strong>City:</strong> <span id="city">Paris</span></p>
-        <p><strong>General Information:</strong> <span id="general">The weather in Paris is Partly sunny.</span></p>
-        <p><strong>Temperature:</strong> <span id="temperature">The temperature is 15°C.</span></p>
+        <p>
+            <strong>City:</strong> New york
+        </p>
+
+        <p>
+            <strong>General Information:</strong> The weather in New york is Mostly cloudy.
+        </p>
+
+        <p>
+            <strong>Temperature:</strong> The temperature is 19°C.
+        </p>
+
         <div id="datetime"></div>
     </div>
 
@@ -222,7 +191,7 @@ body {
         <p>&copy; 2024 Weather Information. All rights reserved.</p>
     </footer>
 
-    
+
     <script>
         function updateDateTime() {
             const dateTimeElement = document.getElementById("datetime");
@@ -234,24 +203,14 @@ body {
 
         setInterval(updateDateTime, 1000);
         updateDateTime();
-
+    </script>
+    <script>
         const colorPicker = document.getElementById("backgroundColorPicker");
         const contentDiv = document.querySelector(".content");
 
         colorPicker.addEventListener("input", function() {
             contentDiv.style.backgroundColor = colorPicker.value;
         });
-
-        function getWeather() {
-            var city = document.getElementById("cityInput").value;
-            document.getElementById("city").innerHTML = city;
-
-            // Call the external weather API here
-			// example:
-			// fetchWeather(city);
-
-        }
-
     </script>
 </body>
 </html>
