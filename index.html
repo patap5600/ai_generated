@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Agents Weather by Gemini, GPT, Anthropic</title>
+    <title>Multi-Agents Weather by Gemini,GPT,Anthropic</title>
     <style>
         body {
             font: 75% georgia, sans-serif;
@@ -12,9 +12,6 @@
             background: hsla(172 40.3% 45.7% / 0.40);
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
 
         .header {
@@ -22,13 +19,6 @@
             color: white;
             text-align: center;
             padding: 1em 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .header h1 {
-            color: white;
-            text-shadow: 2px 2px 4px #000000;
-            font-size: 2em;
         }
 
         .content {
@@ -39,13 +29,6 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            flex: 1;
-        }
-
-        .content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .footer {
@@ -57,14 +40,7 @@
             flex-shrink: 0;
             position: fixed;
             bottom: 0;
-        }
-
-        .footer p {
-            color: white;
-        }
-
-        .footer:hover {
-            background-color: #555;
+            left: 0;
         }
 
         #datetime {
@@ -72,62 +48,81 @@
             text-align: center;
             margin-top: 20px;
             color: #26C6DA;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-            display: block;
         }
 
-        #colorPickerContainer {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 40px; /* Add margin to prevent overlap */
-            display: block;
-            color: black; /* Ensure the label is visible */
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        #backgroundColorPicker {
-            width: 50px;
-            height: 30px;
-            opacity: 1;
-            background-color: white;
+        header h1 {
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            font-size: 2em;
+            text-indent: 0;
+            white-space: normal;
+            overflow: visible;
+            float: none;
+            display: inline-block;
+            width: auto;
+            height: auto;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
         }
 
         h1 {
-            color: white;
+            background: transparent;
+            margin-top: 10px;
+            display: block;
+            width: 219px;
+            height: 87px;
+            float: left;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         h2 {
-            color: #26C6DA;
+            background: transparent;
+            margin-top: 58px;
+            margin-bottom: 40px;
+            width: 200px;
+            height: 18px;
+            float: right;
+            text-indent: 100%;
+            white-space: nowrap;
+            overflow: hidden;
         }
 
-        .dynamic-background {
-            background-color: #f0f0f0;
+        p {
+            margin-top: 0;
+            text-align: justify;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Multi-Agents Weather by Gemini, GPT, Anthropic</h1>
+        <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
     </div>
-
-    <div class="content dynamic-background">
+    <div class="content">
         <section>
             <h2>Weather Information</h2>
-            <p>You asked for the weather in Miami.</p>
-            <p>General information about the weather:</p>
-            <p>The current temperature and weather: The weather in Miami is Sunny with a temperature of 27°C.</p>
+            <p>The weather was requested for: San Francisco</p>
+            <p>General weather information: Partly sunny</p>
+            <p>Current temperature: 15°C</p>
         </section>
+        <div id="datetime"></div>
     </div>
-
-    <div id="colorPickerContainer">
-        <label for="backgroundColorPicker">Change Content Background Color:</label>
-        <input type="color" id="backgroundColorPicker" value="#f0f0f0">
-    </div>
-    <div id="datetime"></div>
-
     <div class="footer">
         <p>&copy; 2024 Multi-Agents Weather. All rights reserved.</p>
     </div>
-
     <script>
         function updateDateTime() {
             const dateTimeElement = document.getElementById("datetime");
@@ -139,13 +134,6 @@
 
         setInterval(updateDateTime, 1000);
         updateDateTime();
-
-        const colorPicker = document.getElementById("backgroundColorPicker");
-        const contentDiv = document.querySelector(".dynamic-background");
-
-        colorPicker.addEventListener("input", function() {
-            contentDiv.style.backgroundColor = colorPicker.value;
-        });
     </script>
 </body>
 </html>
