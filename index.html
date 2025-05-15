@@ -212,18 +212,9 @@ body {
 
         <h2>Weather Information</h2>
 
-        <p>
-            <strong>City:</strong> <span id="city">Paris</span>
-        </p>
-
-        <p>
-            <strong>General Information:</strong> <span id="general">The weather in Paris is Partly sunny.</span>
-        </p>
-
-        <p>
-            <strong>Temperature:</strong> <span id="temperature">The temperature is 15°C.</span>
-        </p>
-
+        <p><strong>City:</strong> <span id="city">Paris</span></p>
+        <p><strong>General Information:</strong> <span id="general">The weather in Paris is Partly sunny.</span></p>
+        <p><strong>Temperature:</strong> <span id="temperature">The temperature is 15°C.</span></p>
         <div id="datetime"></div>
     </div>
 
@@ -254,7 +245,13 @@ body {
         function getWeather() {
             var city = document.getElementById("cityInput").value;
             document.getElementById("city").innerHTML = city;
+
+            // Call the external weather API here
+			// example:
+			// fetchWeather(city);
+
         }
+
     </script>
 </body>
 </html>
