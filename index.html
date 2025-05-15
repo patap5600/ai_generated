@@ -78,6 +78,15 @@
         #colorPickerContainer {
             text-align: center;
             margin-top: 20px;
+            /* Ensure the container is visible */
+            display: block;
+        }
+
+        /* Ensure the input element is visible */
+        #backgroundColorPicker {
+            opacity: 1;
+            width: 50px;
+            height: 30px;
         }
 
         h1 {
@@ -87,6 +96,10 @@
         h2 {
             color: #26C6DA;
         }
+
+        .dynamic-background {
+            background-color: #f0f0f0; /* Default color */
+        }
     </style>
 </head>
 <body>
@@ -94,7 +107,7 @@
         <h1>Multi-Agents Weather by Gemini, GPT, Anthropic</h1>
     </div>
 
-    <div class="content">
+    <div class="content dynamic-background">
         <section>
             <h2>Weather Information</h2>
             <p>You asked for the weather in Miami.</p>
@@ -124,10 +137,10 @@
         updateDateTime();
 
         const colorPicker = document.getElementById("backgroundColorPicker");
-        const contentDiv = document.querySelector(".content");
+        const contentDiv = document.querySelector(".dynamic-background");
 
         colorPicker.addEventListener("input", function() {
-            contentDiv.style.backgroundColor = colorPicker.value + ' !important';
+            contentDiv.style.backgroundColor = colorPicker.value;
         });
     </script>
 </body>
