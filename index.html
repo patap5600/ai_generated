@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Agents Weather by Gemini,GPT,Anthropic</title>
+    <title>Miami Weather</title>
     <style>
 body {
     font: 75% georgia, sans-serif;
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0 0 0 220px; /* Add left margin to body */
+    margin: 0;
     padding: 0;
     min-height: 100vh;
     display: flex;
@@ -18,11 +18,10 @@ body {
 }
 
 .header {
-    background-color: #003300; /* Even darker header background */
-    color: #FFFFFF; /* White header text */
+    background-color: lightblue;
+    color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
 }
 
 .content {
@@ -32,20 +31,16 @@ body {
     margin: 20px auto;
     background-color: #f9f9f9;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     flex: 1;
 }
 
 .footer {
-    background-color: #000000; /* Even darker footer background */
-    color: #FFFFFF; /* Lighter footer text */
+    background-color: #343a40;
+    color: white;
     text-align: center;
-    padding: 1em 0;
-    width: 100%;
-    flex-shrink: 0;
-    bottom: 0;
-    left: 0;
-    position: fixed;
+    padding: 10px;
+    margin-top: auto;
 }
 
 #datetime {
@@ -65,28 +60,31 @@ body {
 }
 
 header h1 {
-    color: #FFFFFF; /* White header text */
-    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000; /* Stronger text shadow */
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
     font-size: 2em;
+    text-indent: 0;
     white-space: normal;
     overflow: visible;
-    display: block;
-    width: 100%;
-    text-align: center;
+    float: none;
+    display: inline-block;
+    width: auto;
     height: auto;
 }
 
 html {
     margin: 0;
     padding: 0;
-    height: 100%;
 }
 
 h1 {
     background: transparent;
     margin-top: 10px;
     display: block;
+    width: 219px;
     height: 87px;
+    float: left;
+    text-indent: 100%;
     white-space: nowrap;
     overflow: hidden;
 }
@@ -105,84 +103,35 @@ h2 {
 
 p {
     margin-top: 0;
-    text-align: justify;
-    color: #333;
-    font-size: 1.1em;
+    text-align: justify
 }
 
-.weather-icon {
-    font-size: 4em;
-    color: #26C6DA;
-    text-align: center;
-    margin-bottom: 20px;
-}
 
-.footer p {
-    color: #FFFFFF; /* Much brighter footer text */
-    text-shadow: 1px 1px 2px #000000; /* Add a subtle text shadow */
-    text-align: center; /* Center the footer text */
-}
-
-.column-menu {
-    width: 200px;
-    background-color: #eee;
-    padding: 20px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    overflow: auto;
-}
-
-.column-menu h3 {
-    margin-top: 0;
-}
-
-#backgroundColorPicker {
-    margin-top: 20px;
-    width: 100%;
-}
-
-.dynamic-background {
-    transition: background-color 0.5s ease;
-}
-</style>
+    </style>
 </head>
 <body>
-
-    <div class="column-menu">
-        <h3>Menu</h3>
-        <ul>
-            <li>Link 1</li>
-            <li>Link 2</li>
-            <li>Link 3</li>
-        </ul>
-
-        <h3>Background Color</h3>
-        <input type="color" id="backgroundColorPicker" value="#f9f9f9">
-    </div>
 
     <div class="header">
         <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
     </div>
 
-    <div class="content dynamic-background">
+    <div class="content">
         <div class="weather-icon">
-            &#x26C5;
+            &#x26C5; 
         </div>
 
         <h2>Weather Information</h2>
 
         <p>
-            <strong>City:</strong> New york
+            <strong>City:</strong> Miami
         </p>
 
         <p>
-            <strong>General Information:</strong> The weather in New york is Mostly cloudy.
+            <strong>General Information:</strong> The weather in Miami is Clear with periodic clouds.
         </p>
 
         <p>
-            <strong>Temperature:</strong> The temperature is 19°C.
+            <strong>Temperature:</strong> The temperature is 27°C.
         </p>
 
         <div id="datetime"></div>
@@ -191,7 +140,6 @@ p {
     <footer class="footer">
         <p>&copy; 2024 Weather Information. All rights reserved.</p>
     </footer>
-
 
     <script>
         function updateDateTime() {
@@ -204,14 +152,6 @@ p {
 
         setInterval(updateDateTime, 1000);
         updateDateTime();
-    </script>
-    <script>
-        const colorPicker = document.getElementById("backgroundColorPicker");
-        const contentDiv = document.querySelector(".content");
-
-        colorPicker.addEventListener("input", function() {
-            contentDiv.style.backgroundColor = colorPicker.value;
-        });
     </script>
 </body>
 </html>
