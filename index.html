@@ -10,21 +10,19 @@ body {
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0;
-    padding: 0 0 50px 0; /* Add padding to the bottom of the body */
+    margin: 0 0 0 220px; /* Add left margin to body */
+    padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 .header {
-    background-color: #57B257;
-    color: #FFFFFF;
+    background-color: #57B257; /* Even darker header background */
+    color: #FFFFFF; /* White header text */
     text-align: center;
     padding: 1em 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    position: relative;
-    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
 }
 
 .content {
@@ -39,15 +37,14 @@ body {
 }
 
 .footer {
-    background-color: #333;
-    color: #FFFFFF;
+    background-color: #000000; /* Even darker footer background */
+    color: #FFFFFF; /* Lighter footer text */
     text-align: center;
     padding: 1em 0;
     width: 100%;
-    position: fixed;
+    flex-shrink: 0;
     bottom: 0;
     left: 0;
-    z-index: 100;
 }
 
 #datetime {
@@ -67,8 +64,8 @@ body {
 }
 
 header h1 {
-    color: #FFFFFF;
-    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000;
+    color: #FFFFFF; /* White header text */
+    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000; /* Stronger text shadow */
     font-size: 2em;
     white-space: normal;
     overflow: visible;
@@ -120,9 +117,9 @@ p {
 }
 
 .footer p {
-    color: #FFFFFF;
-    text-shadow: 1px 1px 2px #000000;
-    text-align: center;
+    color: #FFFFFF; /* Much brighter footer text */
+    text-shadow: 1px 1px 2px #000000; /* Add a subtle text shadow */
+    text-align: center; /* Center the footer text */
 }
 
 .column-menu {
@@ -147,11 +144,6 @@ p {
 
 .dynamic-background {
     transition: background-color 0.5s ease;
-}
-
-/* Ensure the main content is to the right of the menu */
-.header, .content, .footer {
-    margin-left: 220px;
 }
 </style>
 </head>
@@ -181,80 +173,18 @@ p {
         <h2>Weather Information</h2>
 
         <p>
-            <strong>City:</strong> New York
+            <strong>City:</strong> Miami
         </p>
 
         <p>
-            <strong>General Information:</strong> New York has a humid continental climate, characterized by hot summers and cold winters.
-
-Here's a breakdown of the weather in New York:
-
-*   <strong>Temperature:** The hottest month is July, with an average temperature of 84°F (29°C). The coldest month is January, with an average temperature of 39°F (4°C). 
-*   <strong>Rainfall:** New York has moderate rainfall, with an average annual rainfall of 49.6 inches (1260 mm). 
+            <strong>General Information:</strong> The weather in Miami is Cloudy with a temperature of 30°C.
         </p>
 
         <p>
-            <strong>Current Weather:</strong> The weather in New York is Clear with a temperature of 27°C.
+            <strong>Temperature:</strong> The temperature is 30°C.
         </p>
 
         <div id="datetime"></div>
-        <div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-        <script>
-        var fahrenheitValues = [
-          {x:'Jan', y:39},
-          {x:'Feb', y:40},
-          {x:'Mar', y:50},
-          {x:'Apr', y:61},
-          {x:'May', y:71},
-          {x:'Jun', y:80},
-          {x:'Jul', y:84},
-          {x:'Aug', y:83},
-          {x:'Sep', y:75},
-          {x:'Oct', y:64},
-          {x:'Nov', y:53},
-          {x:'Dec', y:42}
-        ];
-
-        // Convert Fahrenheit to Celsius
-        var xyValues = fahrenheitValues.map(item => {
-          return {x: item.x, y: Math.round((item.y - 32) * 5 / 9)};
-        });
-
-        new Chart("myChart", {
-          type: "line",
-          data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            datasets: [{
-              label: 'Temperature (°C)',
-              borderColor: "rgb(0,0,255)",
-              data: xyValues.map(item => item.y),
-              fill: false
-            }]
-          },
-          options: {
-            legend: {display: true},
-            scales: {
-              xAxes: [{
-                display: true,
-                scaleLabel: {
-                  display: true,
-                  labelString: 'Month'
-                }
-              }],
-              yAxes: [{
-                display: true,
-                scaleLabel: {
-                  display: true,
-                  labelString: 'Temperature (°C)'
-                }
-              }]
-            }
-          }
-        });
-        </script>   
-        </div>
     </div>
 
     <footer class="footer">
