@@ -42,7 +42,9 @@ body {
     padding: 1em 0;
     width: 100%;
     flex-shrink: 0;
-    margin-top: auto; /* Push the footer to the bottom */
+    margin-top: auto;
+    bottom: 0;
+    position: sticky;
 }
 
 #datetime {
@@ -118,7 +120,7 @@ p {
 
 /* Improve header and footer text readability */
 .header h1, .footer p {
-    font-size: 1.2em; /* Increase font size */
+    font-size: 2em; /* Increase font size */
     color: #FFFFFF; /* Ensure good contrast */
 }
 
@@ -142,7 +144,8 @@ p {
         </p>
 
         <p>
-            <strong>General Information:</strong> The weather in Miami is Mostly cloudy.\n        </p>
+            <strong>General Information:</strong> The weather in Miami is Mostly cloudy.
+        </p>
 
         <p>
             <strong>Temperature:</strong> The temperature is 31°C.
