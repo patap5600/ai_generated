@@ -1,28 +1,29 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Agents Weather by Gemini,GPT,Anthropic</title>
+    <title>Weather in San Francisco</title>
     <style>
 body {
     font: 75% georgia, sans-serif;
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0;
-    padding: 0 0 50px 220px; /* Add padding to the bottom to make space for the footer and left margin for the menu */
+    margin: 0 0 0 220px; /* Add left margin to body */
+    padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 .header {
-    background-color: #57B257;
-    color: #FFFFFF;
+    background-color: #57B257; /* Even darker header background */
+    color: #FFFFFF; /* White header text */
     text-align: center;
     padding: 1em 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
 }
 
 .content {
@@ -37,15 +38,14 @@ body {
 }
 
 .footer {
-    background-color: #000000;
-    color: #FFFFFF;
+    background-color: #000000; /* Even darker footer background */
+    color: #FFFFFF; /* Lighter footer text */
     text-align: center;
     padding: 1em 0;
     width: 100%;
     flex-shrink: 0;
     bottom: 0;
     left: 0;
-    position: fixed; /* Stick the footer to the bottom */
 }
 
 #datetime {
@@ -65,8 +65,8 @@ body {
 }
 
 header h1 {
-    color: #FFFFFF;
-    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000;
+    color: #FFFFFF; /* White header text */
+    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000; /* Stronger text shadow */
     font-size: 2em;
     white-space: normal;
     overflow: visible;
@@ -118,9 +118,9 @@ p {
 }
 
 .footer p {
-    color: #FFFFFF;
-    text-shadow: 1px 1px 2px #000000;
-    text-align: center;
+    color: #FFFFFF; /* Much brighter footer text */
+    text-shadow: 1px 1px 2px #000000; /* Add a subtle text shadow */
+    text-align: center; /* Center the footer text */
 }
 
 .column-menu {
@@ -146,18 +146,7 @@ p {
 .dynamic-background {
     transition: background-color 0.5s ease;
 }
-
-#chartContainer {
-  height: 300px;
-  width: 100%;
-  margin-top: 20px;
-}
-
-#myChart {
-    position: relative;
-    z-index: 1;
-}
-    </style>
+</style>
 </head>
 <body>
 
@@ -185,22 +174,18 @@ p {
         <h2>Weather Information</h2>
 
         <p>
-            <strong>City:</strong> Miami
+            <strong>City:</strong> San Francisco
         </p>
 
         <p>
-            <strong>General Information:</strong> The weather in Miami is Cloudy with a temperature of 30°C.
+            <strong>General Information:</strong> The weather in San francisco is Mostly cloudy.
         </p>
 
         <p>
-            <strong>Temperature:</strong> The temperature is 30°C.
+            <strong>Temperature:</strong> The temperature is 12°C.
         </p>
 
         <div id="datetime"></div>
-
-        <div id="chartContainer">
-          <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-        </div>
     </div>
 
     <footer class="footer">
@@ -228,21 +213,23 @@ p {
             contentDiv.style.backgroundColor = colorPicker.value;
         });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <body>
+    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
     <script>
     var xyValues = [
-      {x:0, y:20},
-      {x:1, y:21},
-      {x:2, y:22},
-      {x:3, y:23},
-      {x:4, y:24},
-      {x:5, y:25},
-      {x:6, y:26},
-      {x:7, y:27},
-      {x:8, y:28},
-      {x:9, y:29},
-      {x:10, y:30},
-      {x:11, y:25}
+      {x:"January", y:14},
+      {x:"February", y:16},
+      {x:"March", y:17},
+      {x:"April", y:17},
+      {x:"May", y:18},
+      {x:"June", y:19},
+      {x:"July", y:19},
+      {x:"August", y:20},
+      {x:"September", y:21},
+      {x:"October", y:21},
+      {x:"November", y:18},
+      {x:"December", y:14}
     ];
     new Chart("myChart", {
       type: "line",
@@ -256,21 +243,11 @@ p {
       options: {
         legend: {display: false},
         scales: {
-          xAxes: [{
-            ticks: {
-              min: 0, 
-              max: 11
-              }
-            }],
-          yAxes: [{
-            ticks: {
-              min: 15, 
-              max: 35
-              }
-            }]
+          xAxes: [{ticks: {min: "January", max:"December"}}],
+          yAxes: [{ticks: {min: 10, max:25}}],
         }
       }
     });
-    </script>
+    </script>    
 </body>
 </html>
