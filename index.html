@@ -233,21 +233,47 @@ p {
     <script>
         const ctx = document.getElementById('temperatureChart').getContext('2d');
         const myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 datasets: [{
                     label: 'Average Temperature (°C)',
                     data: [20.7, 21.8, 23.7, 25.7, 27.8, 29, 29.4, 29, 28.3, 26.4, 23.4, 21.4],
-                    backgroundColor: 'rgba(38, 198, 218, 0.5)',
+                    backgroundColor: 'rgba(38, 198, 218, 0.2)',
                     borderColor: 'rgba(38, 198, 218, 1)',
-                    borderWidth: 1
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(38, 198, 218, 1)',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 1,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
                 }]
             },
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
+                        ticks: {
+                            color: '#333'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#333'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#333'
+                        }
                     }
                 }
             }
