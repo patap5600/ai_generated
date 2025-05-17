@@ -10,19 +10,21 @@ body {
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0 0 0 220px; /* Add left margin to body */
-    padding: 0;
+    margin: 0;
+    padding: 0 0 50px 0; /* Add padding to the bottom of the body */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 .header {
-    background-color: #57B257; /* Even darker header background */
-    color: #FFFFFF; /* White header text */
+    background-color: #57B257;
+    color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 100;
 }
 
 .content {
@@ -37,14 +39,15 @@ body {
 }
 
 .footer {
-    background-color: #000000; /* Even darker footer background */
-    color: #FFFFFF; /* Lighter footer text */
+    background-color: #333;
+    color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
     width: 100%;
-    flex-shrink: 0;
+    position: fixed;
     bottom: 0;
     left: 0;
+    z-index: 100;
 }
 
 #datetime {
@@ -64,8 +67,8 @@ body {
 }
 
 header h1 {
-    color: #FFFFFF; /* White header text */
-    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000; /* Stronger text shadow */
+    color: #FFFFFF;
+    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000;
     font-size: 2em;
     white-space: normal;
     overflow: visible;
@@ -117,9 +120,9 @@ p {
 }
 
 .footer p {
-    color: #FFFFFF; /* Much brighter footer text */
-    text-shadow: 1px 1px 2px #000000; /* Add a subtle text shadow */
-    text-align: center; /* Center the footer text */
+    color: #FFFFFF;
+    text-shadow: 1px 1px 2px #000000;
+    text-align: center;
 }
 
 .column-menu {
@@ -144,6 +147,11 @@ p {
 
 .dynamic-background {
     transition: background-color 0.5s ease;
+}
+
+/* Ensure the main content is to the right of the menu */
+.header, .content, .footer {
+    margin-left: 220px;
 }
 </style>
 </head>
@@ -177,7 +185,17 @@ p {
         </p>
 
         <p>
-            <strong>General Information:</strong> Miami has a tropical monsoon climate, characterized by hot and humid summers, short and warm winters, and a noticeable drier season in the winter. The city's climate is influenced by its sea-level elevation, coastal location, position just above the Tropic of Cancer, and proximity to the Gulf Stream.\n\nHere's a breakdown of the weather in Miami:\n\n*   **Temperature:** The hottest month is July, with an average temperature of 82°F (28°C). The coldest month is January, with an average temperature of 68°F (20°C). Throughout the year, temperatures typically range from 61°F to 90°F.\n*   **Rainfall:** Miami has abundant rainfall, with an average annual rainfall of 61.9 inches (1,570 mm). Most of the rain occurs from mid-May through early October. The wettest month is October, with an average of 234mm of rain.\n*   **Sunshine:** July has the most daily sunshine hours, with an average of 12 hours.\n*   **Humidity:** The air can feel uncomfortably humid during the summer months, from May to October.\n*   **Water Temperature:** The best month to swim in the sea is August, when the average sea temperature is 86°F (30°C).\n\nIn general, Miami experiences hot and humid summers with frequent thunderstorms and heavy rain. Winters are warm and relatively dry, with occasional cold fronts that can bring cooler temperatures.
+            <strong>General Information:</strong> Miami has a tropical monsoon climate, characterized by hot and humid summers, short and warm winters, and a noticeable drier season in the winter. The city's climate is influenced by its sea-level elevation, coastal location, position just above the Tropic of Cancer, and proximity to the Gulf Stream.
+
+Here's a breakdown of the weather in Miami:
+
+*   <strong>Temperature:** The hottest month is July, with an average temperature of 82°F (28°C). The coldest month is January, with an average temperature of 68°F (20°C). Throughout the year, temperatures typically range from 61°F to 90°F.
+*   <strong>Rainfall:** Miami has abundant rainfall, with an average annual rainfall of 61.9 inches (1,570 mm). Most of the rain occurs from mid-May through early October. The wettest month is October, with an average of 234mm of rain.
+*   <strong>Sunshine:** July has the most daily sunshine hours, with an average of 12 hours.
+*   <strong>Humidity:** The air can feel uncomfortably humid during the summer months, from May to October.
+*   <strong>Water Temperature:** The best month to swim in the sea is August, when the average sea temperature is 86°F (30°C).
+
+In general, Miami experiences hot and humid summers with frequent thunderstorms and heavy rain. Winters are warm and relatively dry, with occasional cold fronts that can bring cooler temperatures.
         </p>
 
         <p>
@@ -185,6 +203,43 @@ p {
         </p>
 
         <div id="datetime"></div>
+        <div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <body>
+        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+        <script>
+        var xyValues = [
+          {x:50, y:7},
+          {x:60, y:8},
+          {x:70, y:8},
+          {x:80, y:9},
+          {x:90, y:9},
+          {x:100, y:9},
+          {x:110, y:10},
+          {x:120, y:11},
+          {x:130, y:14},
+          {x:140, y:14},
+          {x:150, y:15}
+        ];
+        new Chart("myChart", {
+          type: "scatter",
+          data: {
+            datasets: [{
+              pointRadius: 4,
+              pointBackgroundColor: "rgb(0,0,255)",
+              data: xyValues
+            }]
+          },
+          options: {
+            legend: {display: false},
+            scales: {
+              xAxes: [{ticks: {min: 40, max:160}}],
+              yAxes: [{ticks: {min: 6, max:16}}],
+            }
+          }
+        });
+        </script>   
+        </div>
     </div>
 
     <footer class="footer">
