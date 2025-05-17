@@ -12,7 +12,7 @@ body {
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0 0 0 220px; /* Add left margin to body */
+    margin: 0; /* Remove left margin from body */
     padding: 0;
     min-height: 100vh;
     display: flex;
@@ -147,6 +147,12 @@ p {
 .dynamic-background {
     transition: background-color 0.5s ease;
 }
+
+/* Added to prevent overlap */
+#main-content {
+    margin-left: 220px; /* Same width as column-menu */
+    width: calc(100% - 220px);
+}
 </style>
 </head>
 <body>
@@ -163,36 +169,38 @@ p {
         <input type="color" id="backgroundColorPicker" value="#f9f9f9">
     </div>
 
-    <div class="header">
-        <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
-    </div>
-
-    <div class="content dynamic-background">
-        <div class="weather-icon">
-            &#x26C5; 
+    <div id="main-content">
+        <div class="header">
+            <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
         </div>
 
-        <h2>Weather Information</h2>
+        <div class="content dynamic-background">
+            <div class="weather-icon">
+                &#x26C5; 
+            </div>
 
-        <p>
-            <strong>City:</strong> Miami
-        </p>
+            <h2>Weather Information</h2>
 
-        <p>
-            <strong>General Information:</strong> The weather in Miami is Mostly cloudy.
-        </p>
+            <p>
+                <strong>City:</strong> Miami
+            </p>
 
-        <p>
-            <strong>Temperature:</strong> The temperature is 31°C.
-        </p>
+            <p>
+                <strong>General Information:</strong> The weather in Miami is Mostly cloudy.
+            </p>
 
-        <div id="datetime"></div>
-        <div id="myChart" style="width:100%; max-width:600px; height:500px;"></div>
+            <p>
+                <strong>Temperature:</strong> The temperature is 31°C.
+            </p>
+
+            <div id="datetime"></div>
+            <div id="myChart" style="width:100%; max-width:600px; height:500px;"></div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2024 Weather Information. All rights reserved.</p>
+        </footer>
     </div>
-
-    <footer class="footer">
-        <p>&copy; 2024 Weather Information. All rights reserved.</p>
-    </footer>
 
     
     <script>
@@ -219,22 +227,71 @@ p {
     google.charts.load('current',{packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-    // Set Data
-    const data = google.visualization.arrayToDataTable([
-      ['Month', '°C'],
-      ["Jan",7],["Feb",8],["March",8],["April",9],["May",12],["June",15],["Jul",18],["Aug",23],["Sep",17],["Oct",15],["Nov",10],["Dec",9]
-    ]);
-    // Set Options
-    const options = {
-     title: 'Temp vs. Month 2024',
-      hAxis: {title: 'Month'},
-      vAxis: {title: 'Temp °C'},
-      legend: 'none'
+    // 1. **Fetch JSON data (replace with your actual fetching method)**
+    // This is a placeholder. You need to replace this with code that
+    // fetches the JSON data from your web search result.
+    // For example, using the 'fetch' API:
+    //
+    // fetch('YOUR_WEB_SEARCH_API_ENDPOINT')
+    //   .then(response => response.json())
+    //   .then(jsonData => {
+    //     // 2. **Process JSON data**
+    //     const chartData = processWeatherData(jsonData);
+    //     drawChartWithData(chartData);
+    //   });
+
+    // Placeholder data for demonstration purposes
+    const jsonData = {
+      "temperatures": [
+        {"month": "Jan", "temp": 22},
+        {"month": "Feb", "temp": 23},
+        {"month": "Mar", "temp": 24},
+        {"month": "Apr", "temp": 26},
+        {"month": "May", "temp": 28},
+        {"month": "Jun", "temp": 30},
+        {"month": "Jul", "temp": 31},
+        {"month": "Aug", "temp": 31},
+        {"month": "Sep", "temp": 30},
+        {"month": "Oct", "temp": 28},
+        {"month": "Nov", "temp": 25},
+        {"month": "Dec", "temp": 23}
+      ]
     };
-    // Draw
-    const chart = new google.visualization.LineChart(document.getElementById('myChart'));
-    chart.draw(data, options);
+
+    const chartData = processWeatherData(jsonData);
+    drawChartWithData(chartData);
+
+    function processWeatherData(jsonData) {
+      // Assuming your JSON data has a structure like:
+      // {"temperatures": [{"month": "Jan", "temp": 22}, {"month": "Feb", "temp": 23}, ...]}
+
+      const temperatures = jsonData.temperatures;
+      const chartDataArray = [
+        ['Month', '°C'] // Header row
+      ];
+
+      temperatures.forEach(item => {
+        chartDataArray.push([item.month, item.temp]);
+      });
+
+      return chartDataArray;
     }
+
+    function drawChartWithData(chartData) {
+      const data = google.visualization.arrayToDataTable(chartData);
+
+      const options = {
+        title: 'Miami Temperatures Last 12 Months',
+        hAxis: {title: 'Month'},
+        vAxis: {title: 'Temperature (°C)'},
+        legend: 'none'
+      };
+
+      const chart = new google.visualization.LineChart(document.getElementById('myChart'));
+
+      chart.draw(data, options);
+    }
+  }
     </script>
 </body>
 </html>
