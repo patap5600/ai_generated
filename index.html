@@ -3,28 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Agents Weather by Gemini,GPT,Anthropic</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <title>Multi-Agents Weather</title>
     <style>
 body {
     font: 75% georgia, sans-serif;
     line-height: 1.88889;
-    color: #333;
-    background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
+    color: #555753;
+    background: hsla(172 40.3% 45.7% / 0.40);
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 .header {
-    background-color: #57B257;
+    background-color: #006064;
     color: #FFFFFF;
     text-align: center;
-    padding: 1em 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    padding: 1em 0
 }
 
 .content {
@@ -32,10 +26,9 @@ body {
     line-height: 1.6;
     width: 80%;
     margin: 20px auto;
-    background-color: #f9f9f9;
+    background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    flex: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .footer {
@@ -44,17 +37,14 @@ body {
     text-align: center;
     padding: 1em 0;
     width: 100%;
-    flex-shrink: 0;
-    bottom: 0;
-    position: fixed;
-    margin-left: 200px;
+    flex-shrink: 0
 }
 
 #datetime {
     font-size: 1.2em;
     text-align: center;
     margin-top: 20px;
-    color: #26C6DA;
+    color: #26C6DA
 }
 
 .container {
@@ -67,32 +57,33 @@ body {
 }
 
 header h1 {
-    color: #FFFFFF;
-    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
     font-size: 2em;
+    text-indent: 0;
     white-space: normal;
     overflow: visible;
-    display: block;
-    width: 100%;
-    text-align: center;
-    height: auto;
-    margin: 0 auto;
+    float: none;
+    display: inline-block;
+    width: auto;
+    height: auto
 }
 
 html {
     margin: 0;
-    padding: 0;
-    height: 100%;
-    position: relative;
+    padding: 0
 }
 
 h1 {
     background: transparent;
     margin-top: 10px;
     display: block;
+    width: 219px;
     height: 87px;
+    float: left;
+    text-indent: 100%;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: hidden
 }
 
 h2 {
@@ -104,178 +95,42 @@ h2 {
     float: right;
     text-indent: 100%;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: hidden
 }
 
 p {
     margin-top: 0;
-    text-align: justify;
-    color: #333;
-    font-size: 1.1em;
+    text-align: justify
 }
-
-.weather-icon {
-    font-size: 4em;
-    color: #26C6DA;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.footer p {
-    color: #FFFFFF;
-    text-shadow: 1px 1px 2px #000000;
-    text-align: center;
-}
-
-.column-menu {
-    width: 200px;
-    background-color: #eee;
-    padding: 20px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    overflow: auto;
-}
-
-.column-menu h3 {
-    margin-top: 0;
-}
-
-#backgroundColorPicker {
-    margin-top: 20px;
-    width: 100%;
-}
-
-.dynamic-background {
-    transition: background-color 0.5s ease;
-}
-
-#myChart {
-  width: 100%;
-  height: 500px;
-  margin: 20px auto;
-}
-
-.main-container {
-    display: flex;
-    flex-direction: row;
-}
-
-.content-area {
-    flex: 1;
-    margin-left: 200px;
-}
-</style>
+    </style>
 </head>
 <body>
-
-<div class="main-container">
-    <div class="column-menu">
-        <h3>Menu</h3>
-        <ul>
-            <li>Link 1</li>
-            <li>Link 2</li>
-            <li>Link 3</li>
-        </ul>
-
-        <h3>Background Color</h3>
-        <input type="color" id="backgroundColorPicker" value="#f9f9f9">
+    <div class="header">
+        <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
     </div>
-
-    <div class="content-area">
-        <div class="header">
-            <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
-        </div>
-
-        <div class="content dynamic-background">
-            <div class="weather-icon">
-                &#x26C5;
-            </div>
-
+    <div class="content">
+        <section>
             <h2>Weather Information</h2>
-
-            <p>
-                <strong>City:</strong> Miami
-            </p>
-
-            <p>
-                <strong>General Information:</strong> The weather in Miami is Mostly cloudy with a temperature of 31°C.
-            </p>
-
-            <p>
-                <strong>Temperature:</strong> The temperature is 31°C.
-            </p>
-
-            <div id="datetime"></div>
-            <div id="myChart"></div>
-        </div>
-
-        <footer class="footer">
-            <p>&copy; 2024 Weather Information. All rights reserved.</p>
-        </footer>
+            <p>The weather was requested for Miami.</p>
+            <p>The weather in Miami is Mostly cloudy.</p>
+            <p>The temperature in Miami is 31°C.</p>
+        </section>
+        <div id="datetime"></div>
     </div>
-</div>
+    <div class="footer">
+        <p>&copy; 2024 Multi-Agents Weather. All rights reserved.</p>
+    </div>
+    <script>
+        function updateDateTime() {
+            const dateTimeElement = document.getElementById("datetime");
+            const now = new Date();
+            const dateTimeString = now.toLocaleString();
+            dateTimeElement.textContent = `Current Date and Time: ${dateTimeString}`;
+            dateTimeElement.style.color = '#26C6DA';
+        }
 
-
-<script>
-    function updateDateTime() {
-        const dateTimeElement = document.getElementById("datetime");
-        const now = new Date();
-        const dateTimeString = now.toLocaleString();
-        dateTimeElement.textContent = `Current Date and Time: ${dateTimeString}`;
-        dateTimeElement.style.color = '#26C6DA';
-    }
-
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
-</script>
-
-<script>
-    const colorPicker = document.getElementById("backgroundColorPicker");
-    const contentDiv = document.querySelector(".dynamic-background");
-
-    colorPicker.addEventListener("input", function() {
-        contentDiv.style.backgroundColor = colorPicker.value;
-    });
-</script>
-
-<script>
-    google.charts.load('current', {packages: ['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-        // Set Data
-        const data = google.visualization.arrayToDataTable([
-            ['Month', '°C'],
-            ["Jan", 20.3],
-            ["Feb", 24],
-            ["Mar", 25],
-            ["Apr", 26],
-            ["May", 28],
-            ["Jun", 30],
-            ["Jul", 31],
-            ["Aug", 29],
-            ["Sep", 31],
-            ["Oct", 29],
-            ["Nov", 26],
-            ["Dec", 25]
-        ]);
-
-        // Set Options
-        const options = {
-            title: 'Miami Average Monthly Temperatures 2024-2025',
-            hAxis: {title: 'Month'},
-            vAxis: {title: 'Temperature °C'},
-            backgroundColor: '#c8e4e0',
-            legend: 'none'
-        };
-
-        // Draw
-        const chart = new google.visualization.LineChart(document.getElementById('myChart'));
-        chart.draw(data, options);
-    }
-</script>
-
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+    </script>
 </body>
 </html>
