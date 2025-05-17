@@ -11,7 +11,7 @@ body {
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
     margin: 0;
-    padding: 0;
+    padding: 0 0 50px 220px; /* Add padding to the bottom to make space for the footer and left margin for the menu */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -45,6 +45,7 @@ body {
     flex-shrink: 0;
     bottom: 0;
     left: 0;
+    position: fixed; /* Stick the footer to the bottom */
 }
 
 #datetime {
@@ -151,7 +152,12 @@ p {
   width: 100%;
   margin-top: 20px;
 }
-</style>
+
+#myChart {
+    position: relative;
+    z-index: 1;
+}
+    </style>
 </head>
 <body>
 
