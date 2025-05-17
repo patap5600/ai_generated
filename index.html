@@ -10,7 +10,7 @@ body {
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0 0 0 220px; /* Add left margin to body */
+    margin: 0;
     padding: 0;
     min-height: 100vh;
     display: flex;
@@ -18,11 +18,11 @@ body {
 }
 
 .header {
-    background-color: #57B257; /* Even darker header background */
-    color: #FFFFFF; /* White header text */
+    background-color: #57B257;
+    color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .content {
@@ -37,8 +37,8 @@ body {
 }
 
 .footer {
-    background-color: #000000; /* Even darker footer background */
-    color: #FFFFFF; /* Lighter footer text */
+    background-color: #000000;
+    color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
     width: 100%;
@@ -64,8 +64,8 @@ body {
 }
 
 header h1 {
-    color: #FFFFFF; /* White header text */
-    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000; /* Stronger text shadow */
+    color: #FFFFFF;
+    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000;
     font-size: 2em;
     white-space: normal;
     overflow: visible;
@@ -117,9 +117,9 @@ p {
 }
 
 .footer p {
-    color: #FFFFFF; /* Much brighter footer text */
-    text-shadow: 1px 1px 2px #000000; /* Add a subtle text shadow */
-    text-align: center; /* Center the footer text */
+    color: #FFFFFF;
+    text-shadow: 1px 1px 2px #000000;
+    text-align: center;
 }
 
 .column-menu {
@@ -144,6 +144,12 @@ p {
 
 .dynamic-background {
     transition: background-color 0.5s ease;
+}
+
+#chartContainer {
+  height: 300px;
+  width: 100%;
+  margin-top: 20px;
 }
 </style>
 </head>
@@ -185,6 +191,10 @@ p {
         </p>
 
         <div id="datetime"></div>
+
+        <div id="chartContainer">
+          <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+        </div>
     </div>
 
     <footer class="footer">
@@ -211,6 +221,50 @@ p {
         colorPicker.addEventListener("input", function() {
             contentDiv.style.backgroundColor = colorPicker.value;
         });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script>
+    var xyValues = [
+      {x:0, y:20},
+      {x:1, y:21},
+      {x:2, y:22},
+      {x:3, y:23},
+      {x:4, y:24},
+      {x:5, y:25},
+      {x:6, y:26},
+      {x:7, y:27},
+      {x:8, y:28},
+      {x:9, y:29},
+      {x:10, y:30},
+      {x:11, y:25}
+    ];
+    new Chart("myChart", {
+      type: "line",
+      data: {
+        datasets: [{
+          pointRadius: 4,
+          pointBackgroundColor: "rgb(0,0,255)",
+          data: xyValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        scales: {
+          xAxes: [{
+            ticks: {
+              min: 0, 
+              max: 11
+              }
+            }],
+          yAxes: [{
+            ticks: {
+              min: 15, 
+              max: 35
+              }
+            }]
+        }
+      }
+    });
     </script>
 </body>
 </html>
