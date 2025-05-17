@@ -181,60 +181,75 @@ p {
         <h2>Weather Information</h2>
 
         <p>
-            <strong>City:</strong> Miami
+            <strong>City:</strong> New York
         </p>
 
         <p>
-            <strong>General Information:</strong> Miami has a tropical monsoon climate, characterized by hot and humid summers, short and warm winters, and a noticeable drier season in the winter. The city's climate is influenced by its sea-level elevation, coastal location, position just above the Tropic of Cancer, and proximity to the Gulf Stream.
+            <strong>General Information:</strong> New York has a humid continental climate, characterized by hot summers and cold winters.
 
-Here's a breakdown of the weather in Miami:
+Here's a breakdown of the weather in New York:
 
-*   <strong>Temperature:** The hottest month is July, with an average temperature of 82°F (28°C). The coldest month is January, with an average temperature of 68°F (20°C). Throughout the year, temperatures typically range from 61°F to 90°F.
-*   <strong>Rainfall:** Miami has abundant rainfall, with an average annual rainfall of 61.9 inches (1,570 mm). Most of the rain occurs from mid-May through early October. The wettest month is October, with an average of 234mm of rain.
-*   <strong>Sunshine:** July has the most daily sunshine hours, with an average of 12 hours.
-*   <strong>Humidity:** The air can feel uncomfortably humid during the summer months, from May to October.
-*   <strong>Water Temperature:** The best month to swim in the sea is August, when the average sea temperature is 86°F (30°C).
-
-In general, Miami experiences hot and humid summers with frequent thunderstorms and heavy rain. Winters are warm and relatively dry, with occasional cold fronts that can bring cooler temperatures.
+*   <strong>Temperature:** The hottest month is July, with an average temperature of 84°F (29°C). The coldest month is January, with an average temperature of 39°F (4°C). 
+*   <strong>Rainfall:** New York has moderate rainfall, with an average annual rainfall of 49.6 inches (1260 mm). 
         </p>
 
         <p>
-            <strong>Current Weather:</strong> The weather in Miami is Clear with a temperature of 27°C.
+            <strong>Current Weather:</strong> The weather in New York is Clear with a temperature of 27°C.
         </p>
 
         <div id="datetime"></div>
         <div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-        <body>
         <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
         <script>
-        var xyValues = [
-          {x:50, y:7},
-          {x:60, y:8},
-          {x:70, y:8},
-          {x:80, y:9},
-          {x:90, y:9},
-          {x:100, y:9},
-          {x:110, y:10},
-          {x:120, y:11},
-          {x:130, y:14},
-          {x:140, y:14},
-          {x:150, y:15}
+        var fahrenheitValues = [
+          {x:'Jan', y:39},
+          {x:'Feb', y:40},
+          {x:'Mar', y:50},
+          {x:'Apr', y:61},
+          {x:'May', y:71},
+          {x:'Jun', y:80},
+          {x:'Jul', y:84},
+          {x:'Aug', y:83},
+          {x:'Sep', y:75},
+          {x:'Oct', y:64},
+          {x:'Nov', y:53},
+          {x:'Dec', y:42}
         ];
+
+        // Convert Fahrenheit to Celsius
+        var xyValues = fahrenheitValues.map(item => {
+          return {x: item.x, y: Math.round((item.y - 32) * 5 / 9)};
+        });
+
         new Chart("myChart", {
-          type: "scatter",
+          type: "line",
           data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [{
-              pointRadius: 4,
-              pointBackgroundColor: "rgb(0,0,255)",
-              data: xyValues
+              label: 'Temperature (°C)',
+              borderColor: "rgb(0,0,255)",
+              data: xyValues.map(item => item.y),
+              fill: false
             }]
           },
           options: {
-            legend: {display: false},
+            legend: {display: true},
             scales: {
-              xAxes: [{ticks: {min: 40, max:160}}],
-              yAxes: [{ticks: {min: 6, max:16}}],
+              xAxes: [{
+                display: true,
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Month'
+                }
+              }],
+              yAxes: [{
+                display: true,
+                scaleLabel: {
+                  display: true,
+                  labelString: 'Temperature (°C)'
+                }
+              }]
             }
           }
         });
