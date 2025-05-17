@@ -10,7 +10,7 @@ body {
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0; /* Remove left margin from body */
+    margin: 0;
     padding: 0;
     min-height: 100vh;
     display: flex;
@@ -18,11 +18,11 @@ body {
 }
 
 .header {
-    background-color: #57B257; /* Even darker header background */
-    color: #FFFFFF; /* White header text */
+    background-color: #57B257;
+    color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .content {
@@ -37,8 +37,8 @@ body {
 }
 
 .footer {
-    background-color: #000000; /* Even darker footer background */
-    color: #FFFFFF; /* Lighter footer text */
+    background-color: #000000;
+    color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
     width: 100%;
@@ -64,8 +64,8 @@ body {
 }
 
 header h1 {
-    color: #FFFFFF; /* White header text */
-    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000; /* Stronger text shadow */
+    color: #FFFFFF;
+    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000;
     font-size: 2em;
     white-space: normal;
     overflow: visible;
@@ -117,9 +117,9 @@ p {
 }
 
 .footer p {
-    color: #FFFFFF; /* Much brighter footer text */
-    text-shadow: 1px 1px 2px #000000; /* Add a subtle text shadow */
-    text-align: center; /* Center the footer text */
+    color: #FFFFFF;
+    text-shadow: 1px 1px 2px #000000;
+    text-align: center;
 }
 
 .column-menu {
@@ -146,27 +146,23 @@ p {
     transition: background-color 0.5s ease;
 }
 
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
 
-    .card {
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        padding: 20px;
-    }
+.card h3 {
+    color: #26C6DA;
+    margin-bottom: 10px;
+}
 
-    .card h3 {
-        color: #26C6DA;
-        margin-bottom: 10px;
-    }
-
-    .card p {
-        color: #555;
-        line-height: 1.6;
-    }
-
-
-
+.card p {
+    color: #555;
+    line-height: 1.6;
+}
 
 </style>
 </head>
@@ -217,9 +213,6 @@ p {
         <p>&copy; 2024 Weather Information. All rights reserved.</p>
     </footer>
 
-    
-
-
     <script>
         function updateDateTime() {
             const dateTimeElement = document.getElementById("datetime");
@@ -232,7 +225,7 @@ p {
         setInterval(updateDateTime, 1000);
         updateDateTime();
     </script>
-        <script>
+    <script>
         const colorPicker = document.getElementById("backgroundColorPicker");
         const contentDiv = document.querySelector(".dynamic-background");
         colorPicker.addEventListener("input", function() {
