@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -25,6 +26,7 @@ body {
     text-align: center;
     padding: 1em 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    margin-left: 200px; /*Shifted to the right*/
 }
 
 .content {
@@ -47,6 +49,7 @@ body {
     flex-shrink: 0;
     bottom: 0;
     left: 0;
+    margin-left: 200px; /*Shifted to the right*/
 }
 
 #datetime {
@@ -153,22 +156,7 @@ p {
     }
 /* Style adjustments to address the critique */
 body {
-    margin-left: 220px; /* Ensure body content doesn't overlap with menu */
-}
-
-.header {
-    margin-left: 200px; /* Align header with the body content */
-}
-
-.content {
-    margin-left: 20px; /* Add some spacing between the menu and content */
-}
-
-.footer {
-    position: fixed; /*Ensure footer sticks to the bottom*/
-    bottom: 0;
-    width: 100%;
-    margin-left: 0px; /* Align footer with the body content */
+    margin-left: 200px; /* Ensure body content doesn't overlap with menu */
 }
 </style>
 </head>
@@ -227,7 +215,7 @@ body {
             dateTimeElement.style.color = '#26C6DA';
         }
 
-        setInterval(updateDateTime, 1000);
+        setInterval(updateDateTime, 1000);\
         updateDateTime();
     </script>
     <script>
@@ -260,7 +248,7 @@ body {
 
     const data = google.visualization.arrayToDataTable([
       ['Month', '°C'],
-      ['Jan', temperatureData['January']],
+      ['Jan', temperatureData['January']],\
       ['Feb', temperatureData['February']],
       ['Mar', temperatureData['March']],
       ['Apr', temperatureData['April']],
@@ -288,3 +276,4 @@ body {
     </script>
 </body>
 </html>
+```
