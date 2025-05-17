@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multi-Agents Weather by Gemini,GPT,Anthropic</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <style>
 body {
     font: 75% georgia, sans-serif;
@@ -152,6 +154,7 @@ p {
         </p>
 
         <div id="datetime"></div>
+        <div id="myChart" style="width:100%; max-width:600px; height:500px;"></div>
     </div>
 
     <footer class="footer">
@@ -169,6 +172,27 @@ p {
 
         setInterval(updateDateTime, 1000);
         updateDateTime();
+    </script>
+    <script>
+    google.charts.load('current',{packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+    // Set Data
+    const data = google.visualization.arrayToDataTable([
+      ['Month', '°C'],
+      ["Jan",7],["Feb",8],["March",8],["April",9],["May",12],["June",15],["Jul",18],["Aug",23],["Sep",17],["Oct",15],["Nov",10],["Dec",9]
+    ]);
+    // Set Options
+    const options = {
+     title: 'Temp vs. Month 2024',
+      hAxis: {title: 'Month'},
+      vAxis: {title: 'Temp °C'},
+      legend: 'none'
+    };
+    // Draw
+    const chart = new google.visualization.LineChart(document.getElementById('myChart'));
+    chart.draw(data, options);
+    }
     </script>
 </body>
 </html>
