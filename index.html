@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather in Miami</title>
+    <title>Weather in San Francisco</title>
     <style>
 body {
     font: 75% georgia, sans-serif;
@@ -25,7 +25,6 @@ body {
     text-align: center;
     padding: 1em 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    margin-left: 200px;
 }
 
 .content {
@@ -48,8 +47,6 @@ body {
     flex-shrink: 0;
     bottom: 0;
     left: 0;
-    position: fixed;
-    margin-left: 200px;
 }
 
 #datetime {
@@ -70,7 +67,7 @@ body {
 
 header h1 {
     color: #FFFFFF;
-    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000;
+    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000; /* Stronger text shadow */
     font-size: 2em;
     white-space: normal;
     overflow: visible;
@@ -122,9 +119,9 @@ p {
 }
 
 .footer p {
-    color: #FFFFFF;
-    text-shadow: 1px 1px 2px #000000;
-    text-align: center;
+    color: #FFFFFF; /* Much brighter footer text */
+    text-shadow: 1px 1px 2px #000000; /* Add a subtle text shadow */
+    text-align: center; /* Center the footer text */
 }
 
 .column-menu {
@@ -156,7 +153,22 @@ p {
     }
 /* Style adjustments to address the critique */
 body {
-    margin-left: 200px; /* Ensure body content doesn't overlap with menu */
+    margin-left: 220px; /* Ensure body content doesn't overlap with menu */
+}
+
+.header {
+    margin-left: 200px; /* Align header with the body content */
+}
+
+.content {
+    margin-left: 20px; /* Add some spacing between the menu and content */
+}
+
+.footer {
+    position: fixed; /*Ensure footer sticks to the bottom*/
+    bottom: 0;
+    width: 100%;
+    margin-left: 0px; /* Align footer with the body content */
 }
 </style>
 </head>
@@ -175,7 +187,7 @@ body {
     </div>
 
     <div class="header">
-        <h1>Weather in Miami</h1>
+        <h1>Weather in San Francisco</h1>
     </div>
 
     <div class="content dynamic-background">
@@ -186,15 +198,15 @@ body {
         <h2>Weather Information</h2>
 
         <p>
-            <strong>City:</strong> Miami
+            <strong>City:</strong> San Francisco
         </p>
 
         <p>
-            <strong>General Information:</strong> The weather in Miami is Mostly cloudy.
+            <strong>General Information:</strong> San Francisco has a Mediterranean climate, characterized by long, comfortable, and mostly clear summers, and short, cold, wet, and partly cloudy winters.
         </p>
 
         <p>
-            <strong>Temperature:</strong> The temperature is 30°C.
+            <strong>Temperature:</strong> The temperature is 13°C.
         </p>
         <div id="myChart"></div>
 
@@ -232,18 +244,18 @@ body {
     function drawChart() {
     // Set Data
     const temperatureData = {
-  "January": 20.3,
-  "February": 21.1,
-  "March": 22.2,
-  "April": 23.9,
-  "May": 26.1,
-  "June": 27.8,
-  "July": 28,
-  "August": 29,
-  "September": 28.3,
-  "October": 26.7,
-  "November": 23.9,
-  "December": 21.7
+  "January": 10,
+  "February": 11,
+  "March": 11.5,
+  "April": 12,
+  "May": 13,
+  "June": 14.5,
+  "July": 14,
+  "August": 15,
+  "September": 16,
+  "October": 15,
+  "November": 12,
+  "December": 8
 };
 
     const data = google.visualization.arrayToDataTable([
@@ -263,7 +275,7 @@ body {
     ]);
     // Set Options
     const options = {
-     title: 'Miami Temperatures Over Last 12 Months',
+     title: 'San Francisco Temperatures Over Last 12 Months',
       hAxis: {title: 'Month'},
       vAxis: {title: 'Temperature °C'},
       backgroundColor: '#c8e4e0',
