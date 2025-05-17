@@ -24,7 +24,7 @@ body {
     color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
-        margin-left: 200px;
+    margin-left: 200px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -33,7 +33,7 @@ body {
     line-height: 1.6;
     width: 80%;
     margin: 20px auto;
-        margin-left: 200px;
+    margin-left: 200px;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -47,8 +47,7 @@ body {
     padding: 1em 0;
     width: 100%;
     flex-shrink: 0;
-    position: relative;
-        margin-left: 200px;
+    margin-left: 200px;
     bottom: 0;
 }
 
@@ -165,7 +164,21 @@ p {
 .content-area {
     flex: 1;
 }
+/* Fix the Footer to the bottom */
+html, body {
+  height: 100%;
+}
 
+.main-container {
+  min-height: 100%;
+  position: relative;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 </style>
 </head>
 <body>
