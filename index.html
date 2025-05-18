@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<script src="https://www.gstatic.com/charts/loader.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +10,7 @@ body {
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0;
+    margin: 0; /* Remove the left margin from body */
     padding: 0;
     min-height: 100vh;
     display: flex;
@@ -20,12 +18,11 @@ body {
 }
 
 .header {
-    background-color: #1CA7B0; /* Even darker header background */
-    color: #FFFFFF; /* White header text */
+    background-color: #1CA7B0;
+    color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
-    margin-left: 220px; /* Shift header to the right */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .content {
@@ -37,20 +34,17 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex: 1;
-    margin-left: 220px; /* Shift content to the right */
 }
 
 .footer {
-    background-color: #000000; /* Even darker footer background */
-    color: #FFFFFF; /* Lighter footer text */
+    background-color: #000000;
+    color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
     width: 100%;
     flex-shrink: 0;
     bottom: 0;
     left: 0;
-    margin-top: auto;
-    margin-left: 220px; /* Shift footer to the right */
 }
 
 #datetime {
@@ -70,8 +64,8 @@ body {
 }
 
 header h1 {
-    color: #FFFFFF; /* White header text */
-    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000; /* Stronger text shadow */
+    color: #FFFFFF;
+    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000;
     font-size: 2em;
     white-space: normal;
     overflow: visible;
@@ -123,9 +117,9 @@ p {
 }
 
 .footer p {
-    color: #FFFFFF; /* Much brighter footer text */
-    text-shadow: 1px 1px 2px #000000; /* Add a subtle text shadow */
-    text-align: center; /* Center the footer text */
+    color: #FFFFFF;
+    text-shadow: 1px 1px 2px #000000;
+    text-align: center;
 }
 
 .column-menu {
@@ -151,15 +145,24 @@ p {
 .dynamic-background {
     transition: background-color 0.5s ease;
 }
-#myChart{
-	height:300px;
-	width:auto;
-	margin:auto;
+
+.main-container { /* Added a main container */
+    display: flex;
+}
+
+.content {
+    flex: 1; /* Content takes up remaining space */
+}
+
+.footer {
+    margin-top: auto; /* Push footer to the bottom */
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
+<div class="main-container">
     <div class="column-menu">
         <h3>Menu</h3>
         <ul>
@@ -172,39 +175,39 @@ p {
         <input type="color" id="backgroundColorPicker" value="#f9f9f9">
     </div>
 
-    
-    <div class="header">
-        <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
-    </div>
-
     <div class="content dynamic-background">
+        <div class="header">
+            <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
+        </div>
+
         <div class="weather-icon">
-            &#x2600; 
+            &#x26C5; 
         </div>
 
         <h2>Weather Information</h2>
 
         <p>
-            <strong>City:</strong> Miami
+            <strong>City:</strong> San Francisco
         </p>
 
         <p>
-            <strong>General Information:</strong> The weather in Miami is Clear.
+            <strong>General Information:</strong> The weather in San Francisco is clear with a temperature of 12°C.
         </p>
 
         <p>
-            <strong>Temperature:</strong> The temperature is 26°C.
+            <strong>Temperature:</strong> 12°C
         </p>
-        <h2>Temperature in San Francisco</h2>
-		<div id="myChart" style="width:100%; max-width:600px"></div>
+         <div>
+           <canvas id="myChart" width="400" height="200"></canvas>
+         </div>
         <div id="datetime"></div>
     </div>
+</div>
 
     <footer class="footer">
         <p>&copy; 2024 Weather Information. All rights reserved.</p>
     </footer>
 
-    
     <script>
         function updateDateTime() {
             const dateTimeElement = document.getElementById("datetime");
@@ -219,33 +222,38 @@ p {
     </script>
     <script>
         const colorPicker = document.getElementById("backgroundColorPicker");
-        const contentDiv = document.querySelector(".content");
+        const contentDiv = document.querySelector(".dynamic-background");
 
         colorPicker.addEventListener("input", function() {
             contentDiv.style.backgroundColor = colorPicker.value;
         });
     </script>
     <script>
-    google.charts.load('current',{packages:['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-    // Set Data
-    const data = google.visualization.arrayToDataTable([
-      ['Month', '°C'],
-      ['Jan',11],['Feb',12],['March',13],['April',14],['May',15],['June',16],['Jul',16],['Aug',17],['Sep',18],['Oct',17],['Nov',14],['Dec',12]
-    ]);
-    // Set Options
-    const options = {
-     title: 'Temp vs. Month in San Francisco 2024',
-      hAxis: {title: 'Month'},
-      vAxis: {title: 'Temp °C'},
-      backgroundColor: '#c8e4e0',
-      legend: 'none'
-    };
-    // Draw
-    const chart = new google.visualization.LineChart(document.getElementById('myChart'));
-    chart.draw(data, options);
-    }
+    const averageTemperatures = {"January": {"high": 14, "low": 8}, "February": {"high": 16, "low": 9}, "March": {"high": 17, "low": 9}, "April": {"high": 17, "low": 10}, "May": {"high": 18, "low": 11}, "June": {"high": 19, "low": 12}, "July": {"high": 19, "low": 12}, "August": {"high": 20, "low": 13}, "September": {"high": 21, "low": 13}, "October": {"high": 21, "low": 12}, "November": {"high": 18, "low": 10}, "December": {"high": 14, "low": 8}};
+    const labels = Object.keys(averageTemperatures);
+    const highTemperatures = labels.map(month => averageTemperatures[month].high);
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Average High Temperature (°C)',
+                data: highTemperatures,
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
     </script>
 </body>
 </html>
