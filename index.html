@@ -247,40 +247,93 @@
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
+            const temp_data = {
+  "Miami Average Temperatures": {
+    "January": {
+      "high": 76,
+      "low": 63
+    },
+    "February": {
+      "high": 78,
+      "low": 62
+    },
+    "March": {
+      "high": 80,
+      "low": 65
+    },
+    "April": {
+      "high": 83,
+      "low": 68
+    },
+    "May": {
+      "high": 87,
+      "low": 73
+    },
+    "June": {
+      "high": 89,
+      "low": 76
+    },
+    "July": {
+      "high": 91,
+      "low": 77
+    },
+    "August": {
+      "high": 91,
+      "low": 77
+    },
+    "September": {
+      "high": 89,
+      "low": 76
+    },
+    "October": {
+      "high": 86,
+      "low": 74
+    },
+    "November": {
+      "high": 82,
+      "low": 68
+    },
+    "December": {
+      "high": 78,
+      "low": 63
+    }
+  }
+};
+
             // Set Data
             const data = google.visualization.arrayToDataTable([
-                ['Month', 'Min', 'Max'],
-                ['Jan', 20.3, 20.3],
-                ['Feb', 24, 24],
-                ['March', 25, 25],
-                ['April', 26, 26],
-                ['May', 28, 28],
-                ['June', 30, 30],
-                ['Jul', 28, 28],
-                ['Aug', 29, 29],
-                ['Sep', 31, 31],
-                ['Oct', 29, 29],
-                ['Nov', 27, 27],
-                ['Dec', 25, 25]
+                ['Month', 'High', 'Low'],
+                ['Jan', temp_data["Miami Average Temperatures"].January.high, temp_data["Miami Average Temperatures"].January.low],
+                ['Feb', temp_data["Miami Average Temperatures"].February.high, temp_data["Miami Average Temperatures"].February.low],
+                ['March', temp_data["Miami Average Temperatures"].March.high, temp_data["Miami Average Temperatures"].March.low],
+                ['April', temp_data["Miami Average Temperatures"].April.high, temp_data["Miami Average Temperatures"].April.low],
+                ['May', temp_data["Miami Average Temperatures"].May.high, temp_data["Miami Average Temperatures"].May.low],
+                ['June', temp_data["Miami Average Temperatures"].June.high, temp_data["Miami Average Temperatures"].June.low],
+                ['Jul', temp_data["Miami Average Temperatures"].July.high, temp_data["Miami Average Temperatures"].July.low],
+                ['Aug', temp_data["Miami Average Temperatures"].August.high, temp_data["Miami Average Temperatures"].August.low],
+                ['Sep', temp_data["Miami Average Temperatures"].September.high, temp_data["Miami Average Temperatures"].September.low],
+                ['Oct', temp_data["Miami Average Temperatures"].October.high, temp_data["Miami Average Temperatures"].October.low],
+                ['Nov', temp_data["Miami Average Temperatures"].November.high, temp_data["Miami Average Temperatures"].November.low],
+                ['Dec', temp_data["Miami Average Temperatures"].December.high, temp_data["Miami Average Temperatures"].December.low]
             ]);
-            // Set Options
+
             const options = {
                 title: 'Temperature Variations in Miami 2024',
                 hAxis: {
                     title: 'Month'
                 },
                 vAxis: {
-                    title: 'Temperature °C'
+                    title: 'Temperature °F'
                 },
                 series: {
                     0: { color: '#dc3912' },
                     1: { color: '#3366cc' }
                 },
                 backgroundColor: '#c8e4e0',
-                legend: 'none',
+                legend: 'bottom',
                 curveType: 'function'
             };
-            // Draw
+
             const chart = new google.visualization.LineChart(document.getElementById('myChart'));
             chart.draw(data, options);
         }
