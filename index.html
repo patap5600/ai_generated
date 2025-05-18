@@ -11,11 +11,13 @@
             line-height: 1.88889;
             color: #333;
             background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-            margin: 0;
+            margin: 0 0 50px 200px;
+            /* Add margin to the body to accommodate the fixed menu */
             padding: 0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .header {
@@ -24,6 +26,8 @@
             text-align: center;
             padding: 1em 0;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 10;
         }
 
         .content {
@@ -35,6 +39,8 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             flex: 1;
+            position: relative;
+            z-index: 1;
         }
 
         .footer {
@@ -45,6 +51,8 @@
             width: 100%;
             flex-shrink: 0;
             margin-top: auto;
+            position: relative;
+            z-index: 10;
         }
 
         #datetime {
@@ -131,6 +139,7 @@
             top: 0;
             height: 100%;
             overflow: auto;
+            z-index: 1000;
         }
 
         .column-menu h3 {
@@ -220,7 +229,7 @@
 
     <script>
         const xValues = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        const yValues = [11, 12, 13, 14, 14, 15, 16, 17, 17, 17, 14, 11];
+        const yValues = [20, 21, 22, 23, 24, 26, 28, 29, 28, 27, 24, 21];
 
         new Chart("myChart", {
             type: "line",
@@ -236,7 +245,7 @@
                 legend: {display: false},
                 title: {
                     display: true,
-                    text: "Average Temperatures in San Francisco (Celsius)"
+                    text: "Average Temperatures in Miami (Celsius)"
                 }
             }
         });
