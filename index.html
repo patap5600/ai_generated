@@ -156,7 +156,7 @@
         .body-container {
             display: flex;
             min-height: 100vh;
-            margin-left: 200px;
+            margin-left: 200px; /* push body content to the right */
         }
 
         .content {
@@ -167,9 +167,11 @@
         }
 
         .footer {
-            margin-top: auto; /* Push the footer to the bottom */
+            margin-top: auto;
             width: 100%;
             text-align: center;
+            position: fixed;
+            bottom: 0;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -216,12 +218,12 @@
 
             <div id="datetime"></div>
             <div id="myChart"></div>
-
-            <footer class="footer">
-                <p>&copy; 2024 Weather Information. All rights reserved.</p>
-            </footer>
         </div>
     </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Weather Information. All rights reserved.</p>
+    </footer>
 
 
     <script>
