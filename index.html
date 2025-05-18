@@ -234,6 +234,7 @@ p {
     const averageTemperatures = {"January": {"high": 14, "low": 8}, "February": {"high": 16, "low": 9}, "March": {"high": 17, "low": 9}, "April": {"high": 17, "low": 10}, "May": {"high": 18, "low": 11}, "June": {"high": 19, "low": 12}, "July": {"high": 19, "low": 12}, "August": {"high": 20, "low": 13}, "September": {"high": 21, "low": 13}, "October": {"high": 21, "low": 12}, "November": {"high": 18, "low": 10}, "December": {"high": 14, "low": 8}};
     const labels = Object.keys(averageTemperatures);
     const highTemperatures = labels.map(month => averageTemperatures[month].high);
+    const lowTemperatures = labels.map(month => averageTemperatures[month].low);
 
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
@@ -246,14 +247,19 @@ p {
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1
+            }, {
+                label: 'Average Low Temperature (°C)',
+                data: lowTemperatures,
+                fill: false,
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1
             }]
         },
         options: {
             scales: {
                 y: {
                     beginAtZero: true
-                }
-            }
+                }}
         }
     });
     </script>
