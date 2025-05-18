@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +12,7 @@ body {
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0; /* Remove left margin from body */
+    margin: 0 0 0 220px; /* Add left margin to body */
     padding: 0;
     min-height: 100vh;
     display: flex;
@@ -145,36 +147,16 @@ p {
 .dynamic-background {
     transition: background-color 0.5s ease;
 }
-.main-container {
-    display: flex;
-    min-height: 100vh;
-}
-
-.content-wrapper {
-    flex: 1;
-    padding-left: 220px;
-    padding-right: 20px; /* Add right padding to the content wrapper */
-    padding-bottom: 60px; /* Add more padding to ensure footer doesn't overlap */
-}
-
-/* Add this style to ensure the footer sticks to the bottom */
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.content-wrapper {
-    flex: 1;
-}
-
+#myChart{
+        width: 100%;
+        max-width: 600px;
+        height: 400px;
+        margin: 20px auto;
+    }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
 
-<div class="main-container">
     <div class="column-menu">
         <h3>Menu</h3>
         <ul>
@@ -187,83 +169,79 @@ body {
         <input type="color" id="backgroundColorPicker" value="#f9f9f9">
     </div>
 
-    <div class="content-wrapper">
-        <div class="header">
-            <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
-        </div>
-
-        <div class="content dynamic-background">
-            <div class="weather-icon">
-                &#x26C5;
-            </div>
-
-            <h2>Weather Information</h2>
-
-            <p>
-                <strong>City:</strong> Miami
-            </p>
-
-            <p>
-                <strong>General Information:</strong> The weather in Miami is Mostly sunny.
-            </p>
-
-            <p>
-                <strong>Temperature:</strong> The temperature is 26°C.
-            </p>
-
-            <div id="datetime"></div>
-            <div id="myChart" style="width:100%; height:400px;"></div>
-        </div>
+    <div class="header">
+        <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
     </div>
-</div>
 
-<footer class="footer">
-    <p>&copy; 2024 Weather Information. All rights reserved.</p>
-</footer>
+    <div class="content dynamic-background">
+        <div class="weather-icon">
+            &#x26C5; 
+        </div>
 
-<script>
-    function updateDateTime() {
-        const dateTimeElement = document.getElementById("datetime");
-        const now = new Date();
-        const dateTimeString = now.toLocaleString();
-        dateTimeElement.textContent = `Current Date and Time: ${dateTimeString}`;
-        dateTimeElement.style.color = '#26C6DA';
-    }
+        <h2>Weather Information</h2>
 
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
+        <p>
+            <strong>City:</strong> Miami
+        </p>
 
-    const colorPicker = document.getElementById("backgroundColorPicker");
-    const contentDiv = document.querySelector(".dynamic-background");
+        <p>
+            <strong>General Information:</strong> The weather in Miami is Mostly sunny.
+        </p>
 
-    colorPicker.addEventListener("input", function() {
-        contentDiv.style.backgroundColor = colorPicker.value;
-    });
-</script>
+        <p>
+            <strong>Temperature:</strong> The temperature is 30°C.
+        </p>
 
-<script>
-    google.charts.load('current', {packages: ['corechart']});
+        <div id="datetime"></div>
+        <div id="myChart" ></div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 Weather Information. All rights reserved.</p>
+    </footer>
+
+    
+    <script>
+        function updateDateTime() {
+            const dateTimeElement = document.getElementById("datetime");
+            const now = new Date();
+            const dateTimeString = now.toLocaleString();
+            dateTimeElement.textContent = `Current Date and Time: ${dateTimeString}`;
+            dateTimeElement.style.color = '#26C6DA';
+        }
+
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+    </script>
+    <script>
+        const colorPicker = document.getElementById("backgroundColorPicker");
+        const contentDiv = document.querySelector(".content");
+
+        colorPicker.addEventListener("input", function() {
+            contentDiv.style.backgroundColor = colorPicker.value;
+        });
+    </script>
+    <script>
+    google.charts.load('current',{packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
-
     function drawChart() {
-        const data = google.visualization.arrayToDataTable([
-            ['Month', '°C'],
-            ['Jan', 20], ['Feb', 21], ['March', 22], ['April', 24], ['May', 26], ['June', 27],
-            ['July', 28], ['Aug', 29], ['Sep', 27], ['Oct', 26], ['Nov', 23], ['Dec', 21]
-        ]);
-
-        const options = {
-            title: 'Temp vs. Month 2024',
-            hAxis: {title: 'Month'},
-            vAxis: {title: 'Temp °C'},
-            backgroundColor: '#c8e4e0',
-            legend: 'none'
-        };
-
-        const chart = new google.visualization.LineChart(document.getElementById('myChart'));
-        chart.draw(data, options);
+    // Set Data
+    const data = google.visualization.arrayToDataTable([
+      ['Month', '°C'],
+      ['Jan',20.3],['Feb',24],['March',25],['April',26],['May',28],['June',30],['Jul',28],['Aug',29],['Sep',31],['Oct',29],['Nov',27],['Dec',25]
+    ]);
+    // Set Options
+    const options = {
+     title: 'Temp vs. Month 2024',
+      hAxis: {title: 'Month'},
+      vAxis: {title: 'Temp °C'},
+      backgroundColor: '#c8e4e0',
+      legend: 'none'
+    };
+    // Draw
+    const chart = new google.visualization.LineChart(document.getElementById('myChart'));
+    chart.draw(data, options);
     }
-</script>
-
+    </script>
 </body>
 </html>
