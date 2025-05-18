@@ -44,6 +44,8 @@
             padding: 1em 0;
             width: 100%;
             flex-shrink: 0;
+            position: fixed;
+            bottom: 0;
         }
 
         #datetime {
@@ -107,6 +109,7 @@
             text-align: justify;
             color: #333;
             font-size: 1.1em;
+            padding-left: 20px;
         }
 
         .weather-icon {
@@ -156,22 +159,13 @@
         .body-container {
             display: flex;
             min-height: 100vh;
-            margin-left: 200px; /* push body content to the right */
+            padding-left: 200px; /* Avoid overlap */
         }
 
         .content {
             flex: 1;
+            margin-left: 20px;
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .footer {
-            margin-top: auto;
-            width: 100%;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -279,8 +273,8 @@
                     title: 'Temperature °C'
                 },
                 series: {
-                    0: { color: '#dc3912' }, // Max temp color.
-                    1: { color: '#3366cc' }  // Min temp color.
+                    0: { color: '#dc3912' },
+                    1: { color: '#3366cc' }
                 },
                 backgroundColor: '#c8e4e0',
                 legend: 'none',
