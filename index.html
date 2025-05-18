@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,19 +10,20 @@ body {
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0 0 0 220px; /* Add left margin to body */
-    padding: 0;
+    margin: 0; /* Remove margin to fix overlap */
+    padding: 0 0 0 220px; /* Add left padding to body, adjust as needed */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
 .header {
-    background-color: #1CA7B0; /* Even darker header background */
-    color: #FFFFFF; /* White header text */
+    background-color: #1CA7B0;
+    color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 100; /* Ensure header is above the menu */
 }
 
 .content {
@@ -38,14 +38,15 @@ body {
 }
 
 .footer {
-    background-color: #000000; /* Even darker footer background */
-    color: #FFFFFF; /* Lighter footer text */
+    background-color: #000000;
+    color: #FFFFFF;
     text-align: center;
     padding: 1em 0;
     width: 100%;
     flex-shrink: 0;
     bottom: 0;
     left: 0;
+    z-index: 100; /* Ensure footer is above the menu */
 }
 
 #datetime {
@@ -65,8 +66,8 @@ body {
 }
 
 header h1 {
-    color: #FFFFFF; /* White header text */
-    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000; /* Stronger text shadow */
+    color: #FFFFFF;
+    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000;
     font-size: 2em;
     white-space: normal;
     overflow: visible;
@@ -118,9 +119,9 @@ p {
 }
 
 .footer p {
-    color: #FFFFFF; /* Much brighter footer text */
-    text-shadow: 1px 1px 2px #000000; /* Add a subtle text shadow */
-    text-align: center; /* Center the footer text */
+    color: #FFFFFF;
+    text-shadow: 1px 1px 2px #000000;
+    text-align: center;
 }
 
 .column-menu {
@@ -207,11 +208,12 @@ p {
     </script>
     <script>
         const colorPicker = document.getElementById("backgroundColorPicker");
-        const contentDiv = document.querySelector(".content");
+        const contentDiv = document.querySelector(".dynamic-background");
 
         colorPicker.addEventListener("input", function() {
             contentDiv.style.backgroundColor = colorPicker.value;
         });
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </body>
 </html>
