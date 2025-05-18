@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://www.gstatic.com/charts/loader.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,12 +20,12 @@ body {
 }
 
 .header {
-    background-color: #1CA7B0;
-    color: #FFFFFF;
+    background-color: #1CA7B0; /* Even darker header background */
+    color: #FFFFFF; /* White header text */
     text-align: center;
     padding: 1em 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    height: auto; /* Reduced header height */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
+    margin-left: 220px; /* Shift header to the right */
 }
 
 .content {
@@ -35,18 +37,20 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     flex: 1;
+    margin-left: 220px; /* Shift content to the right */
 }
 
 .footer {
-    background-color: #000000;
-    color: #FFFFFF;
+    background-color: #000000; /* Even darker footer background */
+    color: #FFFFFF; /* Lighter footer text */
     text-align: center;
     padding: 1em 0;
     width: 100%;
     flex-shrink: 0;
     bottom: 0;
     left: 0;
-    margin-top: auto; /* Push the footer to the bottom */
+    margin-top: auto;
+    margin-left: 220px; /* Shift footer to the right */
 }
 
 #datetime {
@@ -66,8 +70,8 @@ body {
 }
 
 header h1 {
-    color: #FFFFFF;
-    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000;
+    color: #FFFFFF; /* White header text */
+    text-shadow: 3px 3px 5px #000000, 0 0 10px #000000; /* Stronger text shadow */
     font-size: 2em;
     white-space: normal;
     overflow: visible;
@@ -119,9 +123,9 @@ p {
 }
 
 .footer p {
-    color: #FFFFFF;
-    text-shadow: 1px 1px 2px #000000;
-    text-align: center;
+    color: #FFFFFF; /* Much brighter footer text */
+    text-shadow: 1px 1px 2px #000000; /* Add a subtle text shadow */
+    text-align: center; /* Center the footer text */
 }
 
 .column-menu {
@@ -147,19 +151,10 @@ p {
 .dynamic-background {
     transition: background-color 0.5s ease;
 }
-
-main {
-    display: flex;
-    flex: 1;
-    margin-left: 220px; /* Adjust main content for the sidebar */
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+#myChart{
+	height:300px;
+	width:auto;
+	margin:auto;
 }
 </style>
 </head>
@@ -177,38 +172,39 @@ body {
         <input type="color" id="backgroundColorPicker" value="#f9f9f9">
     </div>
 
-    <main>
-        <div class="header">
-            <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
+    
+    <div class="header">
+        <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
+    </div>
+
+    <div class="content dynamic-background">
+        <div class="weather-icon">
+            &#x2600; 
         </div>
 
-        <div class="content dynamic-background">
-            <div class="weather-icon">
-                &#x2600; 
-            </div>
+        <h2>Weather Information</h2>
 
-            <h2>Weather Information</h2>
+        <p>
+            <strong>City:</strong> Miami
+        </p>
 
-            <p>
-                <strong>City:</strong> Miami
-            </p>
+        <p>
+            <strong>General Information:</strong> The weather in Miami is Clear.
+        </p>
 
-            <p>
-                <strong>General Information:</strong> The weather in Miami is Clear.
-            </p>
-
-            <p>
-                <strong>Temperature:</strong> The temperature is 26°C.
-            </p>
-
-            <div id="datetime"></div>
-        </div>
-    </main>
+        <p>
+            <strong>Temperature:</strong> The temperature is 26°C.
+        </p>
+        <h2>Temperature in San Francisco</h2>
+		<div id="myChart" style="width:100%; max-width:600px"></div>
+        <div id="datetime"></div>
+    </div>
 
     <footer class="footer">
         <p>&copy; 2024 Weather Information. All rights reserved.</p>
     </footer>
 
+    
     <script>
         function updateDateTime() {
             const dateTimeElement = document.getElementById("datetime");
@@ -228,6 +224,28 @@ body {
         colorPicker.addEventListener("input", function() {
             contentDiv.style.backgroundColor = colorPicker.value;
         });
+    </script>
+    <script>
+    google.charts.load('current',{packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+    // Set Data
+    const data = google.visualization.arrayToDataTable([
+      ['Month', '°C'],
+      ['Jan',11],['Feb',12],['March',13],['April',14],['May',15],['June',16],['Jul',16],['Aug',17],['Sep',18],['Oct',17],['Nov',14],['Dec',12]
+    ]);
+    // Set Options
+    const options = {
+     title: 'Temp vs. Month in San Francisco 2024',
+      hAxis: {title: 'Month'},
+      vAxis: {title: 'Temp °C'},
+      backgroundColor: '#c8e4e0',
+      legend: 'none'
+    };
+    // Draw
+    const chart = new google.visualization.LineChart(document.getElementById('myChart'));
+    chart.draw(data, options);
+    }
     </script>
 </body>
 </html>
