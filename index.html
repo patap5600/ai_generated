@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multi-Agents Weather by Gemini,GPT,Anthropic</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
 body {
     font: 75% georgia, sans-serif;
     line-height: 1.88889;
     color: #333;
     background: linear-gradient(to right, hsla(172, 40.3%, 45.7%, 0.40), white);
-    margin: 0; /* Remove margin to fix overlap */
-    padding: 0 0 0 220px; /* Add left padding to body, adjust as needed */
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -23,7 +24,6 @@ body {
     text-align: center;
     padding: 1em 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    z-index: 100; /* Ensure header is above the menu */
 }
 
 .content {
@@ -46,7 +46,6 @@ body {
     flex-shrink: 0;
     bottom: 0;
     left: 0;
-    z-index: 100; /* Ensure footer is above the menu */
 }
 
 #datetime {
@@ -147,6 +146,15 @@ p {
 .dynamic-background {
     transition: background-color 0.5s ease;
 }
+.shifted-content {
+    margin-left: 220px; /* Shift content to the right */
+}
+
+#myChartContainer {
+        width: 600px; /* Adjust as needed */
+        height: 400px; /* Adjust as needed */
+        margin: 20px auto;
+    }
 </style>
 </head>
 <body>
@@ -163,35 +171,40 @@ p {
         <input type="color" id="backgroundColorPicker" value="#f9f9f9">
     </div>
 
-    <div class="header">
-        <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
-    </div>
-
-    <div class="content dynamic-background">
-        <div class="weather-icon">
-            &#x26C5; 
+    <div class="shifted-content">
+        <div class="header">
+            <h1>Multi-Agents Weather by Gemini,GPT,Anthropic</h1>
         </div>
 
-        <h2>Weather Information</h2>
+        <div class="content dynamic-background">
+            <div class="weather-icon">
+                &#x26C5; 
+            </div>
 
-        <p>
-            <strong>City:</strong> Miami
-        </p>
+            <h2>Weather Information</h2>
 
-        <p>
-            <strong>General Information:</strong> The weather in Miami is Clear with periodic clouds.
-        </p>
+            <p>
+                <strong>City:</strong> Miami
+            </p>
 
-        <p>
-            <strong>Temperature:</strong> The temperature is 26°C.
-        </p>
+            <p>
+                <strong>General Information:</strong> The weather in Miami is Clear with periodic clouds.
+            </p>
 
-        <div id="datetime"></div>
+            <p>
+                <strong>Temperature:</strong> The temperature is 26°C. 
+            </p>
+
+            <div id="datetime"></div>
+            <div id="myChartContainer">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2024 Weather Information. All rights reserved.</p>
+        </footer>
     </div>
-
-    <footer class="footer">
-        <p>&copy; 2024 Weather Information. All rights reserved.</p>
-    </footer>
 
     
     <script>
@@ -214,6 +227,62 @@ p {
             contentDiv.style.backgroundColor = colorPicker.value;
         });
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    
+
+
+    <script>
+        // Data for the chart
+        const temperatures = [
+            10, 12, 15, 18, 20, 22, 25, 26, 24, 20, 15, 12
+        ];
+
+        const labels = [
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        ];
+
+        // Chart configuration
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'Average Monthly Temperature (°C)',
+                data: temperatures,
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Average Monthly Temperature in Miami'
+                    }
+                },
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Temperature (°C)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
+                    }
+                }
+            }
+        };
+
+        // Render the chart
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, config);
+    </script>
 </body>
 </html>
